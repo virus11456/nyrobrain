@@ -1,0 +1,24 @@
+{
+    "title": "ADRS",
+    "description": "Alpha development research system",
+    "icon": "Brain",
+    "root": true,
+    "pages": [
+        "---Introduction---",
+        "index",
+        "what-is-adrs",
+        "overview",
+        "---Guide---",
+        "guide/downloading-data",
+        "guide/writing-an-alpha",
+        "guide/building-a-portfolio",
+        "---Documentation---",
+        "alpha",
+        "data",
+        "performance",
+        "portfolio",
+        "search",
+        "test",
+        "report"
+    ]
+}

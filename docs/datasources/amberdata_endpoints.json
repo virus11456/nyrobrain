@@ -1,0 +1,1002 @@
+[
+  {
+    "path": "/derivatives/analytics/instruments/most-traded",
+    "parameters": {
+      "exchange": [
+        "deribit",
+        "okex",
+        "bybit",
+        "lyra",
+        "thalex"
+      ],
+      "currency": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BTC_USDC",
+        "ETH_USDC",
+        "SOL_USDC",
+        "BTC_USDT",
+        "ETH_USDT",
+        "SOL_USDT"
+      ],
+      "timeInterval": [
+        "minute",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/index",
+    "parameters": {
+      "exchange": [
+        "deribit"
+      ],
+      "currency": [
+        "BTC",
+        "ETH"
+      ],
+      "timeInterval": [
+        "minute",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/index-decorated",
+    "parameters": {
+      "exchange": [
+        "deribit"
+      ],
+      "currency": [
+        "BTC",
+        "ETH"
+      ],
+      "timeInterval": [
+        "minute",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/realized-volatility/implied-vs-realized",
+    "parameters": {
+      "exchange": [
+        "deribit",
+        "bybit",
+        "okex",
+        "binance"
+      ],
+      "currency": [
+        "BTC",
+        "ETH",
+        "BTC_USDC",
+        "ETH_USDC",
+        "BTC_USDT",
+        "ETH_USDT"
+      ],
+      "timeInterval": [
+        "hour"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/variance-premium",
+    "parameters": {
+      "currency": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ],
+      "timeInterval": [
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/volatility-of-volatility",
+    "parameters": {
+      "currency": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ],
+      "timeInterval": [
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/term-structures/richness",
+    "parameters": {
+      "exchange": [
+        "deribit",
+        "binance",
+        "bybit",
+        "okex"
+      ],
+      "currency": [
+        "BTC",
+        "ETH",
+        "BTC_USDC",
+        "ETH_USDC",
+        "BTC_USDT",
+        "ETH_USDT"
+      ],
+      "timeInterval": [
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/term-structures/forward-volatility/constant",
+    "parameters": {
+      "exchange": [
+        "deribit",
+        "binance",
+        "bybit",
+        "okex"
+      ],
+      "currency": [
+        "BTC",
+        "ETH",
+        "BTC_USDC",
+        "ETH_USDC",
+        "BTC_USDT",
+        "ETH_USDT"
+      ],
+      "timeInterval": [
+        "minute",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/term-structures/forward-volatility/floating",
+    "parameters": {
+      "exchange": [
+        "deribit",
+        "binance",
+        "bybit",
+        "okex"
+      ],
+      "currency": [
+        "BTC",
+        "ETH",
+        "BTC_USDC",
+        "ETH_USDC",
+        "BTC_USDT",
+        "ETH_USDT"
+      ],
+      "timeInterval": [
+        "minute",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/realized-volatility/cones/information",
+    "parameters": {
+      "exchange": [
+        "binance",
+        "bithumb",
+        "bitstamp",
+        "gdax",
+        "gemini",
+        "kraken",
+        "poloniex",
+        "bybit",
+        "okex"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/realized-volatility/correlation-beta",
+    "parameters": {
+      "exchange": [
+        "binance",
+        "bithumb",
+        "bitstamp",
+        "gdax",
+        "gemini",
+        "kraken",
+        "poloniex",
+        "bybit",
+        "okex"
+      ],
+      "pair": {
+        "type": "string",
+        "required": true
+      },
+      "pair2": {
+        "type": "string",
+        "required": true
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/realized-volatility/monthly-vs-daily-ratio",
+    "parameters": {
+      "exchange": [
+        "binance",
+        "bithumb",
+        "bitstamp",
+        "gdax",
+        "gemini",
+        "kraken",
+        "poloniex",
+        "bybit",
+        "okex"
+      ],
+      "pair": {
+        "type": "string",
+        "required": true
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/realized-volatility/monthly-vs-daily-ratio",
+    "parameters": {
+      "exchange": [
+        "binance",
+        "bithumb",
+        "bitstamp",
+        "gdax",
+        "gemini",
+        "kraken",
+        "poloniex",
+        "bybit",
+        "okex"
+      ],
+      "pair": {
+        "type": "string",
+        "required": true
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/realized-volatility/seasonality/day-of-week",
+    "parameters": {
+      "exchange": [
+        "binance",
+        "bithumb",
+        "bitstamp",
+        "gdax",
+        "gemini",
+        "kraken",
+        "poloniex",
+        "bybit",
+        "okex"
+      ],
+      "pair": {
+        "type": "string",
+        "required": true
+      },
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/realized-volatility/seasonality/month-of-year",
+    "parameters": {
+      "exchange": [
+        "binance",
+        "bithumb",
+        "bitstamp",
+        "gdax",
+        "gemini",
+        "kraken",
+        "poloniex",
+        "bybit",
+        "okex"
+      ],
+      "pair": {
+        "type": "string",
+        "required": true
+      },
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/realized-volatility/cones",
+    "parameters": {
+      "exchange": [
+        "binance",
+        "bithumb",
+        "bitstamp",
+        "gdax",
+        "gemini",
+        "kraken",
+        "poloniex",
+        "bybit",
+        "okex"
+      ],
+      "pair": {
+        "type": "string",
+        "required": true
+      },
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/futures-perpetuals/apr-basis/constant-maturities",
+    "parameters": {
+      "asset": [
+        "BTC",
+        "ETH"
+      ],
+      "interval": {
+        "type": "string",
+        "required": true
+      },
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/futures-perpetuals/apr-basis/live-term-structures",
+    "parameters": {
+      "asset": [
+        "BTC",
+        "ETH"
+      ],
+      "marginType": [
+        "coins",
+        "stables"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/futures-perpetuals/realized-funding-rates-cumulated",
+    "parameters": {
+      "asset": [
+        "BTC",
+        "ETH"
+      ],
+      "marginType": [
+        "coins",
+        "stables"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/futures-perpetuals/funding-rates",
+    "parameters": {
+      "underlying": [
+        "BTC",
+        "ETH"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/futures-perpetuals/liquidations-total",
+    "parameters": {
+      "asset": [
+        "BTC",
+        "ETH"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/futures-perpetuals/open-interest-total",
+    "parameters": {
+      "asset": [
+        "BTC",
+        "ETH"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/futures-perpetuals/volumes",
+    "parameters": {
+      "asset": [
+        "BTC",
+        "ETH"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/svi-altcoins",
+    "parameters": {
+      "currency": [
+        "BTC",
+        "ETH"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/svi-altcoins/deribit-vs-model",
+    "parameters": {
+      "currency": [
+        "ADA",
+        "MKR",
+        "UNI"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/svi-altcoins-table",
+    "parameters": {}
+  },
+  {
+    "path": "/derivatives/analytics/volatility/svi-altcoins-strikes",
+    "parameters": {
+      "currency": [
+        "ADA",
+        "MKR",
+        "UNI"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/svi-hourly",
+    "parameters": {
+      "exchange": [
+        "deribit"
+      ],
+      "currency": [
+        "BTC",
+        "ETH"
+      ],
+      "timeInterval": [
+        "minute",
+        "hour",
+        "day"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/svi-minutely",
+    "parameters": {
+      "currency": [
+        "BTC",
+        "ETH"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/trades-flow/block-volumes",
+    "parameters": {
+      "exchange": [
+        "deribit",
+        "okex",
+        "bybit",
+        "lyra",
+        "thalex"
+      ],
+      "currency": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BTC_USDC",
+        "ETH_USDC",
+        "SOL_USDC",
+        "BTC_USDT",
+        "ETH_USDT",
+        "SOL_USDT"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/trades-flow/decorated-trade",
+    "parameters": {
+      "exchange": [
+        "deribit",
+        "okex",
+        "bybit",
+        "lyra",
+        "thalex"
+      ],
+      "currency": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BTC_USDC",
+        "ETH_USDC",
+        "SOL_USDC",
+        "BTC_USDT",
+        "ETH_USDT",
+        "SOL_USDT"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/trades-flow/gamma-exposures/normalized-usd",
+    "parameters": {
+      "exchange": [
+        "deribit",
+        "okex",
+        "bybit",
+        "lyra",
+        "thalex"
+      ],
+      "currency": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BTC_USDC",
+        "ETH_USDC",
+        "SOL_USDC",
+        "BTC_USDT",
+        "ETH_USDT",
+        "SOL_USDT"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/trades-flow/gamma-exposures-snapshots",
+    "parameters": {
+      "exchange": [
+        "deribit",
+        "okex",
+        "bybit",
+        "lyra",
+        "thalex"
+      ],
+      "currency": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BTC_USDC",
+        "ETH_USDC",
+        "SOL_USDC",
+        "BTC_USDT",
+        "ETH_USDT",
+        "SOL_USDT"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/trades-flow/options-yields",
+    "parameters": {
+      "exchange": [
+        "deribit",
+        "okex",
+        "bybit",
+        "lyra",
+        "thalex"
+      ],
+      "currency": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BTC_USDC",
+        "ETH_USDC",
+        "SOL_USDC",
+        "BTC_USDT",
+        "ETH_USDT",
+        "SOL_USDT"
+      ],
+      "timestamp": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/trades-flow/put-call-distribution",
+    "parameters": {
+      "exchange": [
+        "deribit",
+        "okex",
+        "bybit",
+        "lyra",
+        "thalex"
+      ],
+      "currency": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BTC_USDC",
+        "ETH_USDC",
+        "SOL_USDC",
+        "BTC_USDT",
+        "ETH_USDT",
+        "SOL_USDT"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/trades-flow/put-call-ratio",
+    "parameters": {
+      "exchange": [
+        "deribit",
+        "okex",
+        "bybit",
+        "lyra",
+        "thalex"
+      ],
+      "currency": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BTC_USDC",
+        "ETH_USDC",
+        "SOL_USDC",
+        "BTC_USDT",
+        "ETH_USDT",
+        "SOL_USDT"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      },
+      "timeInterval": [
+        "day",
+        "hour"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/options-scanner/top-trades",
+    "parameters": {
+      "exchange": [
+        "deribit",
+        "okex",
+        "bybit",
+        "lyra",
+        "thalex"
+      ],
+      "currency": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BTC_USDC",
+        "ETH_USDC",
+        "SOL_USDC",
+        "BTC_USDT",
+        "ETH_USDT",
+        "SOL_USDT"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/trades-flow/volume-aggregates",
+    "parameters": {
+      "exchange": [
+        "deribit",
+        "okex",
+        "bybit",
+        "lyra",
+        "thalex"
+      ],
+      "currency": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BTC_USDC",
+        "ETH_USDC",
+        "SOL_USDC",
+        "BTC_USDT",
+        "ETH_USDT",
+        "SOL_USDT"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      },
+      "timeInterval": [
+        "day",
+        "hour",
+        "minute"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/realized-volatility/cones/tradfi",
+    "parameters": {
+      "exchange": [
+        "deribit",
+        "okex",
+        "bybit",
+        "lyra",
+        "thalex"
+      ],
+      "currency": [
+        "IBIT",
+        "COIN"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/realized-volatility/tradfi",
+    "parameters": {
+      "currency": [
+        "IBIT",
+        "COIN"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/level-1-quotes/tradfi",
+    "parameters": {
+      "currency": [
+        "IBIT",
+        "COIN"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      },
+      "timeInterval": [
+        "minute",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/level-1-quotes-instrument/tradfi",
+    "parameters": {
+      "currency": [
+        "IBIT",
+        "COIN"
+      ],
+      "expiration": {
+        "type": "string"
+      },
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      },
+      "timeInterval": [
+        "minute",
+        "hour"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/delta-surfaces/constant/tradfi",
+    "parameters": {
+      "currency": [
+        "IBIT",
+        "COIN"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      },
+      "timeInterval": [
+        "minute",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/delta-surfaces/floating/tradfi",
+    "parameters": {
+      "currency": [
+        "IBIT",
+        "COIN"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      },
+      "timeInterval": [
+        "minute",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/realized-volatility/implied-vs-realized/tradfi",
+    "parameters": {
+      "currency": [
+        "IBIT",
+        "COIN"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/term-structures/forward-volatility/constant/tradfi",
+    "parameters": {
+      "currency": [
+        "IBIT",
+        "COIN"
+      ],
+      "timestamp": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/term-structures/richness/tradfi",
+    "parameters": {
+      "currency": [
+        "IBIT",
+        "MSTR",
+        "COIN"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      },
+      "timeInterval": [
+        "minute",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/open-interest/tradfi",
+    "parameters": {
+      "currency": [
+        "IBIT",
+        "COIN"
+      ],
+      "timestamp": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/volatility/metrics/tradfi",
+    "parameters": {
+      "currency": [
+        "IBIT",
+        "COIN"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/trades-flow/decorated-trades/tradfi",
+    "parameters": {
+      "currency": [
+        "IBIT",
+        "COIN"
+      ],
+      "startDate": {
+        "type": "string"
+      },
+      "endDate": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "path": "/derivatives/analytics/trades-flow/options-yields/tradfi",
+    "parameters": {
+      "currency": [
+        "IBIT",
+        "COIN"
+      ]
+    }
+  },
+  {
+    "path": "/derivatives/analytics/trades-flow/option-volumes/tradfi",
+    "parameters": {
+      "currency": [
+        "IBIT",
+        "COIN"
+      ],
+      "timestamp": {
+        "type": "string"
+      }
+    }
+  }
+]

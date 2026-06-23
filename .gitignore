@@ -1,0 +1,29 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.ruff_cache/
+
+# Virtual environments
+.venv
+
+.DS_Store
+
+credentials.json
+.env*
+!.env.example
+outdir/
+*.parquet
+.claude/
+*.tar.gz
+.snapshots/
+
+# OMS paper-trade live config carries exchange + prime secrets
+config.json
+brain/portfolio/**/config.json
+
+# OMS run logs (kept on the PVC, not committed)
+oms/logs/

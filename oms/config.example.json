@@ -1,0 +1,22 @@
+{
+  "oms_id": "REPLACE_WITH_PORTFOLIO_ID",
+  "portfolio_id": "REPLACE_WITH_PORTFOLIO_ID",
+  "initial_balance": "100000.00",
+  "leverage": "1.0",
+  "base_asset_to_symbol_table": { "BTC": "BTCUSDT", "ETH": "ETHUSDT" },
+  "credentials": {
+    "exchange": "bybit_linear",
+    "api_key": "",
+    "api_secret": "",
+    "testnet": false,
+    "demo": true
+  },
+  "order_placement_interval": 30,
+  "expiry_check": 2,
+  "replace_best_bid_ask_time": 60,
+  "max_limit_replace_interval": 30,
+  "min_limit_replace_interval": 10,
+  "max_retries_allowed": 10,
+  "soft_limit_percent": "0.8",
+  "prime_api_key": ""
+}

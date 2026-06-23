@@ -1,0 +1,437 @@
+---
+title: Building a Portfolio
+description: Combine multiple alphas across multiple assets into a single backtested portfolio with custom allocation.
+---
+
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Accordions, Accordion } from 'fumadocs-ui/components/accordion';
+
+This guide builds a two-asset portfolio (BTC and ETH) where each asset is traded by a **long** alpha and a
+**short** alpha simultaneously, combined with a custom asset weight allocation.
+
+We assume you are familiar with [Writing an Alpha](/docs/adrs/guide/writing-an-alpha). The alpha class
+(`CoinbasePremiumAlpha`) from that guide is reused here.
+
+<Steps>
+<Step>
+
+## Design the portfolio structure
+
+Before writing code, plan the two-level allocation hierarchy:
+
+```
+Portfolio
+├── BTC  (80 % weight)
+│   ├── Alpha: long  (entry ≥ +0.825, exit ≤ -0.825)
+│   └── Alpha: short (entry ≤ -0.825, exit ≥ +0.825)
+└── ETH  (20 % weight)
+    ├── Alpha: long
+    └── Alpha: short
+```
+
+Within each asset the two alphas are **equally weighted** by default. Across assets we use a fixed 80/20 split.
+
+</Step>
+<Step>
+
+## Write a bidirectional alpha
+
+Extend the alpha from the previous guide to support both long and short signals:
+
+```py
+import polars as pl
+from typing import override
+from adrs import Alpha
+from adrs.data import DataInfo, DataColumn, DataProcessor
+
+class CoinbasePremiumAlpha(Alpha):
+    def __init__(
+        self,
+        asset: str,
+        window: int = 40,
+        long_entry: float | None  = None,
+        long_exit:  float | None  = None,
+        short_entry: float | None = None,
+        short_exit:  float | None = None,
+        id: str | None = None,
+    ):
+        direction = "long" if long_entry is not None else "short"
+        super().__init__(
+            id=id or f"coinbase_premium_{direction}_{asset}",
+            data_infos=[
+                DataInfo(
+                    topic=f"binance-spot|candle?symbol={asset}USDT&interval=1h",
+                    columns=[DataColumn(src="close", dst="close_binance")],
+                    lookback_size=window + 100,
+                ),
+                DataInfo(
+                    topic=f"coinbase|candle?symbol={asset}USD&interval=1h",
+                    columns=[DataColumn(src="close", dst="close_coinbase")],
+                    lookback_size=window + 100,
+                ),
+            ],
+            data_processor=DataProcessor(),
+        )
+        self.window      = window
+        self.long_entry  = long_entry
+        self.long_exit   = long_exit
+        self.short_entry = short_entry
+        self.short_exit  = short_exit
+
+    @override
+    def next(self, data_df: pl.DataFrame) -> pl.DataFrame:
+        spread = pl.col("close_coinbase") - pl.col("close_binance")
+        zscore = (
+            (spread - spread.rolling_mean(self.window))
+            / spread.rolling_std(self.window, ddof=1)
+        )
+        df = data_df.with_columns(zscore.alias("zscore")) \
+                    .filter(pl.col("zscore").is_finite())
+
+        if self.long_entry is not None:
+            signal = (
+                pl.when(pl.col("zscore") >= self.long_entry).then(1)
+                  .when(pl.col("zscore") <= self.long_exit).then(0)
+                  .otherwise(None).forward_fill().fill_null(strategy="zero")
+            )
+        else:
+            signal = (
+                pl.when(pl.col("zscore") <= self.short_entry).then(-1)
+                  .when(pl.col("zscore") >= self.short_exit).then(0)
+                  .otherwise(None).forward_fill().fill_null(strategy="zero")
+            )
+
+        return df.with_columns(signal.alias("signal"))
+```
+
+</Step>
+<Step>
+
+## Create alpha instances for each asset
+
+```py
+# BTC alphas
+btc_alphas = [
+    CoinbasePremiumAlpha(asset="BTC", window=40,
+                         long_entry=0.825,  long_exit=-0.825),
+    CoinbasePremiumAlpha(asset="BTC", window=40,
+                         short_entry=-0.825, short_exit=0.825),
+]
+
+# ETH alphas — same strategy, different asset
+eth_alphas = [
+    CoinbasePremiumAlpha(asset="ETH", window=40,
+                         long_entry=0.825,  long_exit=-0.825),
+    CoinbasePremiumAlpha(asset="ETH", window=40,
+                         short_entry=-0.825, short_exit=0.825),
+]
+```
+
+</Step>
+<Step>
+
+## Set up the Evaluator and Datamap
+
+The `Evaluator` must hold a price `DataInfo` for **every** asset in the portfolio. `make_datamap` handles
+loading both the alpha data and the evaluator price data in one call:
+
+```py
+import os, asyncio
+from datetime import datetime
+from adrs import DataLoader
+from adrs.performance import Evaluator
+from adrs.data import DataInfo, DataColumn, make_datamap
+
+async def main():
+    start_time = datetime.fromisoformat("2023-01-01T00:00:00Z")
+    end_time   = datetime.fromisoformat("2025-01-01T00:00:00Z")
+
+    dataloader = DataLoader(
+        data_dir="data/raw",
+        credentials={"cybotrade_api_key": os.getenv("DATASOURCE_API_KEY")},
+    )
+
+    evaluator = Evaluator(assets={
+        "BTC": DataInfo(
+            topic="bybit-linear|candle?symbol=BTCUSDT&interval=1m",
+            columns=[DataColumn(src="close", dst="price")],
+            lookback_size=0,
+        ),
+        "ETH": DataInfo(
+            topic="binance-spot|candle?symbol=ETHUSDT&interval=1m",
+            columns=[DataColumn(src="close", dst="price")],
+            lookback_size=0,
+        ),
+    })
+
+    # Collect all unique data_infos from every alpha
+    all_infos = btc_alphas[0].data_infos + eth_alphas[0].data_infos
+
+    datamap = await make_datamap(
+        dataloader=dataloader,
+        data_infos=all_infos,
+        start_time=start_time,
+        end_time=end_time,
+        evaluator=evaluator,   # automatically fetches price data too
+    )
+```
+
+<Callout title="Why only btc_alphas[0].data_infos?">
+  Both BTC alphas share identical `DataInfo` objects (same topic, same columns). ADRS deduplicates by topic
+  so each feed is only downloaded once, regardless of how many alphas reference it.
+</Callout>
+
+</Step>
+<Step>
+
+## Assemble the Portfolio
+
+```py
+from decimal import Decimal
+from adrs.portfolio import Portfolio, Asset, mean_alpha_allocator
+
+portfolio = Portfolio(
+    id="btc_eth_premium_portfolio",
+    start_time=start_time,
+    end_time=end_time,
+    datamap=datamap,
+    evaluator=evaluator,
+    assets=[
+        Asset(
+            name="BTC",
+            alphas=btc_alphas,
+            fees=0.035,
+            price_shift=10,
+            allocator=mean_alpha_allocator,  # equal weight across long + short
+        ),
+        Asset(
+            name="ETH",
+            alphas=eth_alphas,
+            fees=0.035,
+            price_shift=10,
+            allocator=mean_alpha_allocator,
+        ),
+    ],
+    # Fixed 80/20 BTC/ETH split
+    asset_allocator=lambda _: {
+        "BTC": Decimal("0.8"),
+        "ETH": Decimal("0.2"),
+    },
+)
+```
+
+</Step>
+<Step>
+
+## Backtest and generate a report
+
+```py
+from adrs.utils import backforward_split
+from adrs.report.portfolio import PortfolioReportV1
+
+B_start, B_end, F_start, F_end = backforward_split(
+    start_time=start_time, end_time=end_time, size=(0.7, 0.3)
+)
+
+report = PortfolioReportV1.compute(
+    portfolio=portfolio,
+    B_start=B_start, B_end=B_end,
+    F_start=F_start, F_end=F_end,
+)
+
+# ── Portfolio-level results ──────────────────────────────────────────────
+back = report.back.performance
+print(f"Sharpe:    {back.sharpe_ratio:.2f}")
+print(f"CAGR:      {back.cagr:.1%}")
+print(f"Max DD:    {back.max_drawdown_percentage:.1%}")
+
+# ── Per-asset breakdown ──────────────────────────────────────────────────
+for asset, trade_perf in back.trades.items():
+    print(f"  {asset}  Sharpe={trade_perf.sharpe_ratio:.2f}  "
+          f"WinRate={trade_perf.win_rate:.1%}")
+```
+
+</Step>
+</Steps>
+
+---
+
+## Custom allocators
+
+The built-in `mean_alpha_allocator` and `mean_asset_allocator` split weight equally. For more sophisticated
+strategies you can write any callable that matches the expected signature.
+
+### Sharpe-weighted alpha allocator
+
+Assign more weight to whichever alpha performed better in the period:
+
+```py
+from decimal import Decimal
+from adrs.portfolio import AlphaPerformances, AlphaWeights
+
+def sharpe_alpha_allocator(performances: AlphaPerformances) -> AlphaWeights:
+    sharpes = {
+        alpha_id: max(perf.sharpe_ratio, 0.0)
+        for alpha_id, (perf, _) in performances.items()
+    }
+    total = sum(sharpes.values()) or 1.0
+    return {
+        alpha_id: Decimal(str(round(s / total, 6)))
+        for alpha_id, s in sharpes.items()
+    }
+```
+
+### Volatility-parity asset allocator
+
+Allocate more capital to the less-volatile asset:
+
+```py
+from adrs.portfolio import AlphaGroup, AssetWeights
+
+def vol_parity_allocator(groups: dict[str, AlphaGroup]) -> AssetWeights:
+    # Use inverse of max drawdown as a volatility proxy
+    inv_vol = {}
+    for name, group in groups.items():
+        perfs = group.backtest_alphas()
+        avg_dd = sum(p.max_drawdown_percentage for p, _ in perfs.values()) / len(perfs)
+        inv_vol[name] = 1.0 / (avg_dd + 1e-9)
+    total = sum(inv_vol.values())
+    return {
+        name: Decimal(str(round(v / total, 6)))
+        for name, v in inv_vol.items()
+    }
+```
+
+Pass your allocators to `Asset` and `Portfolio`:
+
+```py
+Asset(name="BTC", ..., allocator=sharpe_alpha_allocator)
+
+Portfolio(
+    ...,
+    asset_allocator=vol_parity_allocator,
+)
+```
+
+---
+
+## Complete source
+
+<Accordions>
+  <Accordion id="full-portfolio-source" title="Full script">
+    ```py
+    import os, asyncio
+    import polars as pl
+    from typing import override
+    from decimal import Decimal
+    from datetime import datetime
+
+    from adrs import Alpha, DataLoader
+    from adrs.data import DataInfo, DataColumn, DataProcessor, make_datamap
+    from adrs.performance import Evaluator
+    from adrs.portfolio import Portfolio, Asset, mean_alpha_allocator
+    from adrs.utils import backforward_split
+    from adrs.report.portfolio import PortfolioReportV1
+
+
+    class CoinbasePremiumAlpha(Alpha):
+        def __init__(self, asset, window=40,
+                     long_entry=None, long_exit=None,
+                     short_entry=None, short_exit=None, id=None):
+            direction = "long" if long_entry is not None else "short"
+            super().__init__(
+                id=id or f"coinbase_premium_{direction}_{asset}",
+                data_infos=[
+                    DataInfo(
+                        topic=f"binance-spot|candle?symbol={asset}USDT&interval=1h",
+                        columns=[DataColumn(src="close", dst="close_binance")],
+                        lookback_size=window + 100,
+                    ),
+                    DataInfo(
+                        topic=f"coinbase|candle?symbol={asset}USD&interval=1h",
+                        columns=[DataColumn(src="close", dst="close_coinbase")],
+                        lookback_size=window + 100,
+                    ),
+                ],
+                data_processor=DataProcessor(),
+            )
+            self.window = window
+            self.long_entry = long_entry;  self.long_exit  = long_exit
+            self.short_entry = short_entry; self.short_exit = short_exit
+
+        @override
+        def next(self, data_df: pl.DataFrame):
+            spread = pl.col("close_coinbase") - pl.col("close_binance")
+            zscore = (spread - spread.rolling_mean(self.window)) \
+                     / spread.rolling_std(self.window, ddof=1)
+            df = data_df.with_columns(zscore.alias("zscore")) \
+                        .filter(pl.col("zscore").is_finite())
+            if self.long_entry is not None:
+                sig = (pl.when(pl.col("zscore") >= self.long_entry).then(1)
+                         .when(pl.col("zscore") <= self.long_exit).then(0)
+                         .otherwise(None).forward_fill().fill_null(strategy="zero"))
+            else:
+                sig = (pl.when(pl.col("zscore") <= self.short_entry).then(-1)
+                         .when(pl.col("zscore") >= self.short_exit).then(0)
+                         .otherwise(None).forward_fill().fill_null(strategy="zero"))
+            return df.with_columns(sig.alias("signal"))
+
+
+    async def main():
+        start_time = datetime.fromisoformat("2023-01-01T00:00:00Z")
+        end_time   = datetime.fromisoformat("2025-01-01T00:00:00Z")
+
+        dataloader = DataLoader(data_dir="data/raw",
+                                credentials={"cybotrade_api_key": os.getenv("DATASOURCE_API_KEY")})
+        evaluator = Evaluator(assets={
+            "BTC": DataInfo(topic="bybit-linear|candle?symbol=BTCUSDT&interval=1m",
+                            columns=[DataColumn(src="close", dst="price")],
+                            lookback_size=0),
+            "ETH": DataInfo(topic="binance-spot|candle?symbol=ETHUSDT&interval=1m",
+                            columns=[DataColumn(src="close", dst="price")],
+                            lookback_size=0),
+        })
+
+        btc_alphas = [
+            CoinbasePremiumAlpha("BTC", long_entry=0.825,  long_exit=-0.825),
+            CoinbasePremiumAlpha("BTC", short_entry=-0.825, short_exit=0.825),
+        ]
+        eth_alphas = [
+            CoinbasePremiumAlpha("ETH", long_entry=0.825,  long_exit=-0.825),
+            CoinbasePremiumAlpha("ETH", short_entry=-0.825, short_exit=0.825),
+        ]
+
+        datamap = await make_datamap(
+            dataloader=dataloader,
+            data_infos=btc_alphas[0].data_infos + eth_alphas[0].data_infos,
+            start_time=start_time, end_time=end_time,
+            evaluator=evaluator,
+        )
+
+        portfolio = Portfolio(
+            id="btc_eth_premium_portfolio",
+            start_time=start_time, end_time=end_time,
+            datamap=datamap, evaluator=evaluator,
+            assets=[
+                Asset(name="BTC", alphas=btc_alphas, fees=0.035, price_shift=10,
+                      allocator=mean_alpha_allocator),
+                Asset(name="ETH", alphas=eth_alphas, fees=0.035, price_shift=10,
+                      allocator=mean_alpha_allocator),
+            ],
+            asset_allocator=lambda _: {"BTC": Decimal("0.8"), "ETH": Decimal("0.2")},
+        )
+
+        B_start, B_end, F_start, F_end = backforward_split(
+            start_time=start_time, end_time=end_time, size=(0.7, 0.3)
+        )
+        report = PortfolioReportV1.compute(portfolio=portfolio,
+                                           B_start=B_start, B_end=B_end,
+                                           F_start=F_start, F_end=F_end)
+        print(report.back.performance)
+
+
+    if __name__ == "__main__":
+        asyncio.run(main())
+    ```
+  </Accordion>
+</Accordions>

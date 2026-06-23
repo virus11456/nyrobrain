@@ -1,0 +1,64 @@
+---
+title: Concept
+description: A conceptual overview of alpha design, from data inputs to signal generation.
+---
+
+import { Mermaid } from '@/components/mermaid';
+
+## Alpha
+
+One way to conceptualise an **alpha** is to outline its processes and model our understanding around its behaviour. The 
+figure below depicts an overview of how an alpha behaves particularly on how it process data and eventually turn them 
+into trading signals.
+
+```mermaid
+flowchart LR
+    A["$$x$$"]:::nobox
+    B["Model"]
+    C["$$y$$"]:::nobox
+    D["Signal Generation"]
+    E["$$[-1, 1]$$"]:::nobox
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+
+    %% Define the custom class to hide the box
+    classDef nobox fill: none, stroke: none;
+```
+
+> <div className='not-prose'>$$x$$ = input data<br />$$y$$ = model data</div>
+
+**Model** and **Signal Generation** in this scenario can be thought as mathematical functions albeit their signatures are 
+not necessarily the same. Note that $$x$$ can be any data (for eg. market data, on-chain events, etc.) and the exact structure of $$y$$ is 
+not restricted, it is up to the implementor to decide how to translate $$y$$ into signals later.
+
+### Model
+
+**Model** can be any of the following functions:
+- $$f(x) \to y$$
+- $$f(x) \to y_1, \;y_2, \;y_n$$
+- $$f(x_1, \;x_2, ... \;x_n) \to y$$
+- $$f(x_1, \;x_2, ... \;x_n) \to y_1, \;y_2, ... \;y_n$$
+
+Note that from the possible signatures, it implies that $$x$$ can be a singular data or multiple data hence it is possible 
+for an **alpha** to utilise multiple data sources as input to its model. For example, a simple model
+
+$$y = x_1 - x_2$$
+
+> <div className="not-prose">$$x_1$$ = BTC price on Exchange A <br /> $$x_2$$ = BTC price on Exchange B</div>
+
+In this case, the model computes the difference in price across Exchange A and Exchange B.
+
+### Signal Generation
+
+**Signal Generation** can be any of the following functions:
+- $$f(y) \to [-1,1]$$
+- $$f(y_1, \;y_2, ... \;y_n) \to [-1,1]$$
+
+A trading signal to put simply is a real number ranging between $$-1$$ to $$1$$ where negative number implies a sell 
+position, positive number implies a buy position and $$0$$ is a special number to indicate empty position. 
+
+The input of the signal generator fits specifically to how one's $$y$$ (model data) is structured hence why it can take 
+$$y$$ or $$y_1, y_2, ... y_n$$. The only specification is that it must return a number between $$[-1,1]$$ to indicate its 
+confidence level on future price going up / down.

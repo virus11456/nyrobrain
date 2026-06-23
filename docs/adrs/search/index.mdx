@@ -1,0 +1,154 @@
+---
+title: Search
+description: Grid and random search over alpha parameter spaces.
+---
+
+## Overview
+
+ADRS provides two search strategies for exploring an alpha's **parameter space** — the set of all possible
+combinations of hyper-parameters (e.g. rolling window size, entry threshold).
+
+Both strategies implement the same `Search` interface, making them interchangeable.
+
+---
+
+## ParameterGrid
+
+A parameter grid is simply a `dict` where each key is a parameter name and each value is an array of candidate values:
+
+```py
+grid: ParameterGrid = {
+    "window": [20, 40, 60, 100],
+    "long_entry_threshold": [0.5, 0.75, 1.0, 1.25],
+    "fees": [0.02, 0.035],
+}
+```
+
+With the grid above, the total Cartesian product contains `4 × 4 × 2 = 32` permutations.
+
+---
+
+## GridSearch
+
+`GridSearch` exhaustively enumerates every combination in the parameter grid.
+
+```py
+from adrs.search import GridSearch
+
+search = GridSearch()
+permutations = search.search(grid)
+# [{"window": 20, "long_entry_threshold": 0.5, "fees": 0.02}, ...]
+```
+
+Use `GridSearch` when the parameter space is small enough to evaluate fully, or as a baseline for comparing
+other search strategies.
+
+---
+
+## RandomSearch
+
+`RandomSearch` draws a random sample from the parameter space, optionally weighted by a statistical distribution.
+
+```py
+from adrs.search import RandomSearch, Distribution
+
+search = RandomSearch(
+    samples=0.3,              # evaluate 30 % of all permutations
+    seed=42,                  # reproducibility
+    dist=Distribution.UNIFORM,
+)
+permutations = search.search(grid)
+```
+
+### Constructor
+
+```py
+RandomSearch(
+    samples: int | float,
+    seed: int,
+    dist: Distribution,
+    **dist_kwargs,
+)
+```
+
+| Parameter | Type | Description |
+|---|---|---|
+| `samples` | `int` | Absolute number of permutations to sample |
+| `samples` | `float` | Fraction of total permutations to sample (e.g. `0.3` = 30 %) |
+| `seed` | `int` | Random seed for reproducibility |
+| `dist` | `Distribution` | Probability distribution to weight the sampling |
+| `**dist_kwargs` | — | Additional keyword arguments forwarded to the distribution |
+
+### Distribution
+
+```py
+from adrs.search import Distribution
+
+Distribution.UNIFORM     # equal probability for every value (default)
+Distribution.NORMAL      # bell-curve weighting around the centre of each range
+Distribution.LOGNORMAL   # log-normal weighting (positive skew)
+Distribution.EXPONENTIAL # exponential decay from the start of each range
+Distribution.BETA        # beta distribution (requires alpha, beta kwargs)
+Distribution.GAMMA       # gamma distribution (requires shape kwargs)
+```
+
+---
+
+## Search interface
+
+Both classes implement the `Search` base interface:
+
+```py
+class Search:
+    def search(self, grid: ParameterGrid) -> Sequence[Permutation]:
+        """Generate a sequence of parameter dicts to evaluate."""
+        ...
+
+    def filter(self, permutations: Sequence[T]) -> Sequence[T]:
+        """Post-filter the generated permutations if needed."""
+        ...
+```
+
+You can subclass `Search` to implement your own strategy (e.g. Bayesian optimisation):
+
+```py
+from adrs.search import Search, ParameterGrid, Permutation
+from typing import Sequence
+
+class MySearch(Search):
+    @staticmethod
+    def id() -> str:
+        return "my_search"
+
+    def search(self, grid: ParameterGrid) -> Sequence[Permutation]:
+        # your custom logic here
+        ...
+
+    def filter(self, permutations):
+        return permutations  # no filtering
+```
+
+---
+
+## Usage with Sensitivity
+
+`Search` strategies are passed directly to `Sensitivity` to control how parameter variations are generated
+during robustness testing:
+
+```py
+from adrs.tests import Sensitivity, SensitivityParameter
+from adrs.search import RandomSearch, Distribution
+
+sensitivity = Sensitivity(
+    alpha=alpha,
+    parameters={
+        "window": SensitivityParameter(min_val=10, min_gap=5),
+        "long_entry_threshold": SensitivityParameter(min_val=0.1),
+    },
+    gap_percent=0.15,
+    num_steps=3,
+    search=RandomSearch(samples=0.5, seed=0, dist=Distribution.UNIFORM),
+)
+```
+
+See [Sensitivity](/docs/adrs/sensitivity) for a complete walkthrough.

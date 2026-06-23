@@ -1,0 +1,7978 @@
+[
+  {
+    "path": "/v1/btc/status/entity-list",
+    "parameters": {
+      "type": [
+        "exchange",
+        "miner",
+        "bank"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/exchange-flows/reserve",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/exchange-flows/netflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/exchange-flows/inflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/exchange-flows/outflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/exchange-flows/transactions-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/exchange-flows/addresses-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/exchange-flows/in-house-flow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/miner-flows/reserve",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "miner": [
+        "1thash",
+        "all_miner",
+        "all_miner_halving",
+        "antpool",
+        "binance_pool",
+        "bitfury",
+        "bitminter",
+        "btc_com",
+        "btc_top",
+        "ck_pool",
+        "dpool",
+        "f2pool",
+        "foundryusapool",
+        "huobi_pool",
+        "lubian",
+        "luxor",
+        "mara_pool",
+        "okx_pool",
+        "other",
+        "patoshi",
+        "pega_pool",
+        "poolin",
+        "sbi_crypto",
+        "slush",
+        "terra_pool",
+        "viabtc",
+        "wayi_cn"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/miner-flows/netflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "miner": [
+        "1thash",
+        "all_miner",
+        "all_miner_halving",
+        "antpool",
+        "binance_pool",
+        "bitfury",
+        "bitminter",
+        "btc_com",
+        "btc_top",
+        "ck_pool",
+        "dpool",
+        "f2pool",
+        "foundryusapool",
+        "huobi_pool",
+        "lubian",
+        "luxor",
+        "mara_pool",
+        "okx_pool",
+        "other",
+        "patoshi",
+        "pega_pool",
+        "poolin",
+        "sbi_crypto",
+        "slush",
+        "terra_pool",
+        "viabtc",
+        "wayi_cn"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/miner-flows/inflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "miner": [
+        "1thash",
+        "all_miner",
+        "all_miner_halving",
+        "antpool",
+        "binance_pool",
+        "bitfury",
+        "bitminter",
+        "btc_com",
+        "btc_top",
+        "ck_pool",
+        "dpool",
+        "f2pool",
+        "foundryusapool",
+        "huobi_pool",
+        "lubian",
+        "luxor",
+        "mara_pool",
+        "okx_pool",
+        "other",
+        "patoshi",
+        "pega_pool",
+        "poolin",
+        "sbi_crypto",
+        "slush",
+        "terra_pool",
+        "viabtc",
+        "wayi_cn"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/miner-flows/outflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "miner": [
+        "1thash",
+        "all_miner",
+        "all_miner_halving",
+        "antpool",
+        "binance_pool",
+        "bitfury",
+        "bitminter",
+        "btc_com",
+        "btc_top",
+        "ck_pool",
+        "dpool",
+        "f2pool",
+        "foundryusapool",
+        "huobi_pool",
+        "lubian",
+        "luxor",
+        "mara_pool",
+        "okx_pool",
+        "other",
+        "patoshi",
+        "pega_pool",
+        "poolin",
+        "sbi_crypto",
+        "slush",
+        "terra_pool",
+        "viabtc",
+        "wayi_cn"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/miner-flows/transactions-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "miner": [
+        "1thash",
+        "all_miner",
+        "all_miner_halving",
+        "antpool",
+        "binance_pool",
+        "bitfury",
+        "bitminter",
+        "btc_com",
+        "btc_top",
+        "ck_pool",
+        "dpool",
+        "f2pool",
+        "foundryusapool",
+        "huobi_pool",
+        "lubian",
+        "luxor",
+        "mara_pool",
+        "okx_pool",
+        "other",
+        "patoshi",
+        "pega_pool",
+        "poolin",
+        "sbi_crypto",
+        "slush",
+        "terra_pool",
+        "viabtc",
+        "wayi_cn"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/miner-flows/addresses-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "miner": [
+        "1thash",
+        "all_miner",
+        "all_miner_halving",
+        "antpool",
+        "binance_pool",
+        "bitfury",
+        "bitminter",
+        "btc_com",
+        "btc_top",
+        "ck_pool",
+        "dpool",
+        "f2pool",
+        "foundryusapool",
+        "huobi_pool",
+        "lubian",
+        "luxor",
+        "mara_pool",
+        "okx_pool",
+        "other",
+        "patoshi",
+        "pega_pool",
+        "poolin",
+        "sbi_crypto",
+        "slush",
+        "terra_pool",
+        "viabtc",
+        "wayi_cn"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/miner-flows/in-house-flow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "miner": [
+        "1thash",
+        "all_miner",
+        "all_miner_halving",
+        "antpool",
+        "binance_pool",
+        "bitfury",
+        "bitminter",
+        "btc_com",
+        "btc_top",
+        "ck_pool",
+        "dpool",
+        "f2pool",
+        "foundryusapool",
+        "huobi_pool",
+        "lubian",
+        "luxor",
+        "mara_pool",
+        "okx_pool",
+        "other",
+        "patoshi",
+        "pega_pool",
+        "poolin",
+        "sbi_crypto",
+        "slush",
+        "terra_pool",
+        "viabtc",
+        "wayi_cn"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/bank-flows/reserve",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "bank": [
+        "binance_pegged",
+        "blockfi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/bank-flows/netflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "bank": [
+        "binance_pegged",
+        "blockfi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/bank-flows/inflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "bank": [
+        "binance_pegged",
+        "blockfi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/bank-flows/outflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "bank": [
+        "binance_pegged",
+        "blockfi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/bank-flows/transactions-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "bank": [
+        "binance_pegged",
+        "blockfi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/bank-flows/addresses-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "bank": [
+        "binance_pegged",
+        "blockfi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/inter-entity-flows/exchange-to-exchange",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "from_exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ],
+      "to_exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/inter-entity-flows/miner-to-exchange",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "from_miner": [
+        "1thash",
+        "all_miner",
+        "all_miner_halving",
+        "antpool",
+        "binance_pool",
+        "bitfury",
+        "bitminter",
+        "btc_com",
+        "btc_top",
+        "ck_pool",
+        "dpool",
+        "f2pool",
+        "foundryusapool",
+        "huobi_pool",
+        "lubian",
+        "luxor",
+        "mara_pool",
+        "okx_pool",
+        "other",
+        "patoshi",
+        "pega_pool",
+        "poolin",
+        "sbi_crypto",
+        "slush",
+        "terra_pool",
+        "viabtc",
+        "wayi_cn"
+      ],
+      "to_exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/inter-entity-flows/bank-to-exchange",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "from_bank": [
+        "binance_pegged",
+        "blockfi"
+      ],
+      "to_exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/inter-entity-flows/exchange-to-miner",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "from_exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ],
+      "to_miner": [
+        "1thash",
+        "all_miner",
+        "all_miner_halving",
+        "antpool",
+        "binance_pool",
+        "bitfury",
+        "bitminter",
+        "btc_com",
+        "btc_top",
+        "ck_pool",
+        "dpool",
+        "f2pool",
+        "foundryusapool",
+        "huobi_pool",
+        "lubian",
+        "luxor",
+        "mara_pool",
+        "okx_pool",
+        "other",
+        "patoshi",
+        "pega_pool",
+        "poolin",
+        "sbi_crypto",
+        "slush",
+        "terra_pool",
+        "viabtc",
+        "wayi_cn"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/inter-entity-flows/miner-to-miner",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "from_miner": [
+        "1thash",
+        "all_miner",
+        "all_miner_halving",
+        "antpool",
+        "binance_pool",
+        "bitfury",
+        "bitminter",
+        "btc_com",
+        "btc_top",
+        "ck_pool",
+        "dpool",
+        "f2pool",
+        "foundryusapool",
+        "huobi_pool",
+        "lubian",
+        "luxor",
+        "mara_pool",
+        "okx_pool",
+        "other",
+        "patoshi",
+        "pega_pool",
+        "poolin",
+        "sbi_crypto",
+        "slush",
+        "terra_pool",
+        "viabtc",
+        "wayi_cn"
+      ],
+      "to_miner": [
+        "1thash",
+        "all_miner",
+        "all_miner_halving",
+        "antpool",
+        "binance_pool",
+        "bitfury",
+        "bitminter",
+        "btc_com",
+        "btc_top",
+        "ck_pool",
+        "dpool",
+        "f2pool",
+        "foundryusapool",
+        "huobi_pool",
+        "lubian",
+        "luxor",
+        "mara_pool",
+        "okx_pool",
+        "other",
+        "patoshi",
+        "pega_pool",
+        "poolin",
+        "sbi_crypto",
+        "slush",
+        "terra_pool",
+        "viabtc",
+        "wayi_cn"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/inter-entity-flows/bank-to-miner",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "from_bank": [
+        "binance_pegged",
+        "blockfi"
+      ],
+      "to_miner": [
+        "1thash",
+        "all_miner",
+        "all_miner_halving",
+        "antpool",
+        "binance_pool",
+        "bitfury",
+        "bitminter",
+        "btc_com",
+        "btc_top",
+        "ck_pool",
+        "dpool",
+        "f2pool",
+        "foundryusapool",
+        "huobi_pool",
+        "lubian",
+        "luxor",
+        "mara_pool",
+        "okx_pool",
+        "other",
+        "patoshi",
+        "pega_pool",
+        "poolin",
+        "sbi_crypto",
+        "slush",
+        "terra_pool",
+        "viabtc",
+        "wayi_cn"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/inter-entity-flows/exchange-to-bank",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "from_exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ],
+      "to_bank": [
+        "binance_pegged",
+        "blockfi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/inter-entity-flows/miner-to-bank",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "from_miner": [
+        "1thash",
+        "all_miner",
+        "all_miner_halving",
+        "antpool",
+        "binance_pool",
+        "bitfury",
+        "bitminter",
+        "btc_com",
+        "btc_top",
+        "ck_pool",
+        "dpool",
+        "f2pool",
+        "foundryusapool",
+        "huobi_pool",
+        "lubian",
+        "luxor",
+        "mara_pool",
+        "okx_pool",
+        "other",
+        "patoshi",
+        "pega_pool",
+        "poolin",
+        "sbi_crypto",
+        "slush",
+        "terra_pool",
+        "viabtc",
+        "wayi_cn"
+      ],
+      "to_bank": [
+        "binance_pegged",
+        "blockfi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/inter-entity-flows/bank-to-bank",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "from_bank": [
+        "binance_pegged",
+        "blockfi"
+      ],
+      "to_bank": [
+        "binance_pegged",
+        "blockfi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/market-data/capitalization",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/market-data/price-ohlcv",
+    "parameters": {
+      "window": [
+        "block",
+        "min",
+        "hour",
+        "day"
+      ],
+      "market": [
+        "perpetual",
+        "spot"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bittrex",
+        "coinbase_advanced",
+        "ftx",
+        "gemini",
+        "htx_global",
+        "huobi_global",
+        "kraken",
+        "okx",
+        "bitmex",
+        "bybit",
+        "deribit"
+      ],
+      "symbol": [
+        "btc_usd",
+        "btc_usdt"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/market-data/open-interest",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bitfinex",
+        "bitmex",
+        "bybit",
+        "deribit",
+        "ftx",
+        "gate_io",
+        "htx_global",
+        "huobi_global",
+        "kraken",
+        "okx"
+      ],
+      "symbol": [
+        "all_symbol",
+        "btc_busd",
+        "btc_usd",
+        "btc_usdt"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/market-data/funding-rates",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bitmex",
+        "bybit",
+        "deribit",
+        "htx_global",
+        "huobi_global",
+        "okx"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/market-data/taker-buy-sell-stats",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bitmex",
+        "bybit",
+        "deribit",
+        "htx_global",
+        "huobi_global",
+        "okx"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/market-data/coinbase-premium-index",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/market-data/liquidations",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bitfinex",
+        "bitmex",
+        "bybit",
+        "deribit",
+        "ftx",
+        "gate_io",
+        "htx_global",
+        "huobi_global",
+        "okx"
+      ],
+      "symbol": [
+        "all_symbol",
+        "btc_busd",
+        "btc_usd",
+        "btc_usdt"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-data/block-bytes",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-data/block-count",
+    "parameters": {
+      "window": [
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-data/block-interval",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-data/utxo-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-data/fees",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-data/fees-transaction",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-data/blockreward",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-data/difficulty",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-data/hashrate",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-data/supply",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-data/transactions-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-data/tokens-transferred",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-data/velocity",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-data/addresses-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/flow-indicator/fund-flow-ratio",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/flow-indicator/mpi",
+    "parameters": {
+      "window": [
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/flow-indicator/exchange-shutdown-index",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/flow-indicator/exchange-whale-ratio",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/flow-indicator/stablecoins-ratio",
+    "parameters": {
+      "window": [
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/flow-indicator/exchange-inflow-cdd",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/flow-indicator/exchange-inflow-age-distribution",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/flow-indicator/exchange-inflow-supply-distribution",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/flow-indicator/exchange-supply-ratio",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "bibox",
+        "bigone",
+        "binance",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bkex",
+        "btse",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbase_prime",
+        "coinone",
+        "coinsbit",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hashkey_exchange",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "mexc",
+        "mt_gox",
+        "okx",
+        "p2pb2b",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/flow-indicator/miner-supply-ratio",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "miner": [
+        "1thash",
+        "all_miner",
+        "all_miner_halving",
+        "antpool",
+        "binance_pool",
+        "bitfury",
+        "bitminter",
+        "btc_com",
+        "btc_top",
+        "ck_pool",
+        "dpool",
+        "f2pool",
+        "foundryusapool",
+        "huobi_pool",
+        "lubian",
+        "luxor",
+        "mara_pool",
+        "okx_pool",
+        "other",
+        "patoshi",
+        "pega_pool",
+        "poolin",
+        "sbi_crypto",
+        "slush",
+        "terra_pool",
+        "viabtc",
+        "wayi_cn"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/flow-indicator/bank-supply-ratio",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "bank": [
+        "binance_pegged",
+        "blockfi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/market-indicator/mvrv",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/market-indicator/sopr",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/market-indicator/sopr-ratio",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/market-indicator/stablecoin-supply-ratio",
+    "parameters": {
+      "window": [
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/market-indicator/estimated-leverage-ratio",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bitfinex",
+        "bitmex",
+        "bybit",
+        "deribit",
+        "ftx",
+        "gate_io",
+        "htx_global",
+        "huobi_global",
+        "kraken",
+        "okx"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/market-indicator/realized-price",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/market-indicator/utxo-realized-price-age-distribution",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/stock-to-flow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/nvm",
+    "parameters": {
+      "window": [
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/nvt",
+    "parameters": {
+      "window": [
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/puell-multiple",
+    "parameters": {
+      "window": [
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/nvt-golden-cross",
+    "parameters": {
+      "window": [
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/cdd",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/mca",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/sca",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/sca-distribution",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/nupl",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/pnl-utxo",
+    "parameters": {
+      "window": [
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/pnl-supply",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/dormancy",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/utxo-age-distribution",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/utxo-realized-age-distribution",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/utxo-count-age-distribution",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/spent-output-age-distribution",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/utxo-supply-distribution",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/utxo-realized-supply-distribution",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/utxo-count-supply-distribution",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/spent-output-supply-distribution",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/network-indicator/nrpl",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/fund-data/market-price-usd",
+    "parameters": {
+      "window": [
+        "day"
+      ],
+      "symbol": [
+        "all_symbol",
+        "arkb",
+        "bitb",
+        "brrr",
+        "btc",
+        "btcc_u",
+        "btce",
+        "btco",
+        "btcw",
+        "ezbc",
+        "fbtc",
+        "gbtc",
+        "hodl",
+        "ibit"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/fund-data/market-volume",
+    "parameters": {
+      "window": [
+        "day"
+      ],
+      "symbol": [
+        "all_symbol",
+        "arkb",
+        "bitb",
+        "brrr",
+        "btc",
+        "btcc_u",
+        "btce",
+        "btco",
+        "btcw",
+        "ezbc",
+        "fbtc",
+        "gbtc",
+        "hodl",
+        "ibit"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/fund-data/market-premium",
+    "parameters": {
+      "window": [
+        "day"
+      ],
+      "symbol": [
+        "all_symbol",
+        "arkb",
+        "bitb",
+        "brrr",
+        "btc",
+        "btcc_u",
+        "btce",
+        "btco",
+        "btcw",
+        "ezbc",
+        "fbtc",
+        "gbtc",
+        "hodl",
+        "ibit"
+      ]
+    }
+  },
+  {
+    "path": "/v1/btc/fund-data/digital-asset-holdings",
+    "parameters": {
+      "window": [
+        "day"
+      ],
+      "symbol": [
+        "all_symbol",
+        "arkb",
+        "bitb",
+        "brrr",
+        "btc",
+        "btcc_u",
+        "btce",
+        "btco",
+        "btcw",
+        "ezbc",
+        "fbtc",
+        "gbtc",
+        "hodl",
+        "ibit"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/status/entity-list",
+    "parameters": {
+      "type": [
+        "exchange"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/exchange-flows/reserve",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "ascendex",
+        "biki_com",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bity",
+        "btse",
+        "bybit",
+        "cashierest",
+        "cat_ex",
+        "cex_io",
+        "coinbase_advanced",
+        "coinex",
+        "coinhako",
+        "coinlist_pro",
+        "coinone",
+        "cointiger",
+        "crypto_com",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hitbtc",
+        "hoo_com",
+        "hotbit",
+        "htx_global",
+        "idex",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "otcbtc",
+        "paribu",
+        "peatio",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "remitano",
+        "ripio",
+        "robinhood",
+        "spot_exchange",
+        "swissborg",
+        "tidex",
+        "topbtc",
+        "upbit",
+        "whitebit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/exchange-flows/netflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "ascendex",
+        "biki_com",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bity",
+        "btse",
+        "bybit",
+        "cashierest",
+        "cat_ex",
+        "cex_io",
+        "coinbase_advanced",
+        "coinex",
+        "coinhako",
+        "coinlist_pro",
+        "coinone",
+        "cointiger",
+        "crypto_com",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hitbtc",
+        "hoo_com",
+        "hotbit",
+        "htx_global",
+        "idex",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "otcbtc",
+        "paribu",
+        "peatio",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "remitano",
+        "ripio",
+        "robinhood",
+        "spot_exchange",
+        "swissborg",
+        "tidex",
+        "topbtc",
+        "upbit",
+        "whitebit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/exchange-flows/inflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "ascendex",
+        "biki_com",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bity",
+        "btse",
+        "bybit",
+        "cashierest",
+        "cat_ex",
+        "cex_io",
+        "coinbase_advanced",
+        "coinex",
+        "coinhako",
+        "coinlist_pro",
+        "coinone",
+        "cointiger",
+        "crypto_com",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hitbtc",
+        "hoo_com",
+        "hotbit",
+        "htx_global",
+        "idex",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "otcbtc",
+        "paribu",
+        "peatio",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "remitano",
+        "ripio",
+        "robinhood",
+        "spot_exchange",
+        "swissborg",
+        "tidex",
+        "topbtc",
+        "upbit",
+        "whitebit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/exchange-flows/outflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "ascendex",
+        "biki_com",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bity",
+        "btse",
+        "bybit",
+        "cashierest",
+        "cat_ex",
+        "cex_io",
+        "coinbase_advanced",
+        "coinex",
+        "coinhako",
+        "coinlist_pro",
+        "coinone",
+        "cointiger",
+        "crypto_com",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hitbtc",
+        "hoo_com",
+        "hotbit",
+        "htx_global",
+        "idex",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "otcbtc",
+        "paribu",
+        "peatio",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "remitano",
+        "ripio",
+        "robinhood",
+        "spot_exchange",
+        "swissborg",
+        "tidex",
+        "topbtc",
+        "upbit",
+        "whitebit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/exchange-flows/transactions-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "ascendex",
+        "biki_com",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bity",
+        "btse",
+        "bybit",
+        "cashierest",
+        "cat_ex",
+        "cex_io",
+        "coinbase_advanced",
+        "coinex",
+        "coinhako",
+        "coinlist_pro",
+        "coinone",
+        "cointiger",
+        "crypto_com",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hitbtc",
+        "hoo_com",
+        "hotbit",
+        "htx_global",
+        "idex",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "otcbtc",
+        "paribu",
+        "peatio",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "remitano",
+        "ripio",
+        "robinhood",
+        "spot_exchange",
+        "swissborg",
+        "tidex",
+        "topbtc",
+        "upbit",
+        "whitebit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/exchange-flows/addresses-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "ascendex",
+        "biki_com",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bity",
+        "btse",
+        "bybit",
+        "cashierest",
+        "cat_ex",
+        "cex_io",
+        "coinbase_advanced",
+        "coinex",
+        "coinhako",
+        "coinlist_pro",
+        "coinone",
+        "cointiger",
+        "crypto_com",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hitbtc",
+        "hoo_com",
+        "hotbit",
+        "htx_global",
+        "idex",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "otcbtc",
+        "paribu",
+        "peatio",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "remitano",
+        "ripio",
+        "robinhood",
+        "spot_exchange",
+        "swissborg",
+        "tidex",
+        "topbtc",
+        "upbit",
+        "whitebit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/market-data/open-interest",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bitfinex",
+        "bitmex",
+        "bybit",
+        "deribit",
+        "ftx",
+        "gate_io",
+        "htx_global",
+        "huobi_global",
+        "kraken",
+        "okx"
+      ],
+      "symbol": [
+        "all_symbol",
+        "eth_usd",
+        "eth_usdt"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/market-data/funding-rates",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bitmex",
+        "bybit",
+        "deribit",
+        "htx_global",
+        "huobi_global",
+        "okx"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/market-data/taker-buy-sell-stats",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bitmex",
+        "bybit",
+        "deribit",
+        "htx_global",
+        "huobi_global",
+        "okx"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/market-data/price-ohlcv",
+    "parameters": {
+      "window": [
+        "block",
+        "min",
+        "hour",
+        "day"
+      ],
+      "market": [
+        "perpetual",
+        "spot"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bittrex",
+        "coinbase_advanced",
+        "ftx",
+        "gemini",
+        "htx_global",
+        "huobi_global",
+        "kraken",
+        "okx",
+        "bitmex",
+        "bybit",
+        "deribit"
+      ],
+      "symbol": [
+        "eth_usd",
+        "eth_usdt"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/market-data/coinbase-premium-index",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/market-data/liquidations",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bitfinex",
+        "bitmex",
+        "bybit",
+        "deribit",
+        "ftx",
+        "gate_io",
+        "htx_global",
+        "huobi_global",
+        "okx"
+      ],
+      "symbol": [
+        "all_symbol",
+        "eth_usd",
+        "eth_usdt"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/market-data/capitalization",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/eth2/total-value-staked",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/eth2/staking-inflow-total",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/eth2/staking-transaction-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/eth2/staking-validator-total",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/eth2/depositor-count-total",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/eth2/depositor-count-new",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/eth2/staking-rate",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/eth2/phase0-success-rate",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/fund-data/market-price-usd",
+    "parameters": {
+      "window": [
+        "day"
+      ],
+      "symbol": [
+        "all_symbol",
+        "ceth",
+        "eth",
+        "etha",
+        "ethe",
+        "ethh_u",
+        "ethv",
+        "ethw",
+        "ezet",
+        "feth",
+        "qeth"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/fund-data/market-volume",
+    "parameters": {
+      "window": [
+        "day"
+      ],
+      "symbol": [
+        "all_symbol",
+        "ceth",
+        "eth",
+        "etha",
+        "ethe",
+        "ethh_u",
+        "ethv",
+        "ethw",
+        "ezet",
+        "feth",
+        "qeth"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/fund-data/market-premium",
+    "parameters": {
+      "window": [
+        "day"
+      ],
+      "symbol": [
+        "all_symbol",
+        "ceth",
+        "eth",
+        "etha",
+        "ethe",
+        "ethh_u",
+        "ethv",
+        "ethw",
+        "ezet",
+        "feth",
+        "qeth"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/fund-data/digital-asset-holdings",
+    "parameters": {
+      "window": [
+        "day"
+      ],
+      "symbol": [
+        "all_symbol",
+        "ceth",
+        "eth",
+        "etha",
+        "ethe",
+        "ethh_u",
+        "ethv",
+        "ethw",
+        "ezet",
+        "feth",
+        "qeth"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/supply",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/transactions-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/addresses-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/block-bytes",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/block-interval",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/block-count",
+    "parameters": {
+      "window": [
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/uncle-block-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/fees",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/fees-burnt",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/fees-tips",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/fees-transaction",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/fees-burnt-transaction",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/fees-tips-transaction",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/blockreward",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/blockreward-except-uncle",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/uncle-blockreward",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/difficulty",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/hashrate",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/gas",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/base-fee",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/max-fee",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/max-priority-fee",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/velocity",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/contracts-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/transactions-count-between-eoa",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/contract-calls-count-external",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/contract-calls-count-internal",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/contract-calls-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/transactions-count-all",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/tokens-transferred-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/tokens-transferred-count-between-eoa",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/tokens-transferred-count-by-contract-calls-external",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/tokens-transferred-count-by-contract-calls-internal",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/tokens-transferred-count-by-contract-calls",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/tokens-transferred-count-all",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/tokens-transferred",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/tokens-transferred-between-eoa",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/tokens-transferred-by-contract-calls-external",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/tokens-transferred-by-contract-calls-internal",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/tokens-transferred-by-contract-calls",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/tokens-transferred-all",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/failed-transactions-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/failed-tokens-transferred-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/network-data/addresses-count-all",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/flow-indicator/exchange-supply-ratio",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "ascendex",
+        "biki_com",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitflyer",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "bity",
+        "btse",
+        "bybit",
+        "cashierest",
+        "cat_ex",
+        "cex_io",
+        "coinbase_advanced",
+        "coinex",
+        "coinhako",
+        "coinlist_pro",
+        "coinone",
+        "cointiger",
+        "crypto_com",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hitbtc",
+        "hoo_com",
+        "hotbit",
+        "htx_global",
+        "idex",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "otcbtc",
+        "paribu",
+        "peatio",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "remitano",
+        "ripio",
+        "robinhood",
+        "spot_exchange",
+        "swissborg",
+        "tidex",
+        "topbtc",
+        "upbit",
+        "whitebit",
+        "yobit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/eth/market-indicator/estimated-leverage-ratio",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bitfinex",
+        "bitmex",
+        "bybit",
+        "deribit",
+        "ftx",
+        "gate_io",
+        "htx_global",
+        "huobi_global",
+        "kraken",
+        "okx"
+      ]
+    }
+  },
+  {
+    "path": "/v1/stablecoin/status/entity-list",
+    "parameters": {
+      "token": [
+        "all_token",
+        "busd",
+        "dai",
+        "gusd",
+        "husd",
+        "sai",
+        "susd",
+        "tusd",
+        "usdc",
+        "usdk",
+        "usdp",
+        "usdt_eth"
+      ],
+      "type": [
+        "exchange"
+      ]
+    }
+  },
+  {
+    "path": "/v1/stablecoin/exchange-flows/reserve",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "token": [
+        "all_token",
+        "busd",
+        "dai",
+        "gusd",
+        "husd",
+        "sai",
+        "susd",
+        "tusd",
+        "usdc",
+        "usdk",
+        "usdp",
+        "usdt_eth"
+      ],
+      "exchange": [
+        "aax",
+        "all_exchange",
+        "ascendex",
+        "bgogo",
+        "bibox",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitforex",
+        "bitget",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "btse",
+        "bw_com",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinex",
+        "coinone",
+        "coinsbit",
+        "cointiger",
+        "crypto_com",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "hitbtc",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "paribu",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "whitebit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/stablecoin/exchange-flows/netflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "token": [
+        "all_token",
+        "busd",
+        "dai",
+        "gusd",
+        "husd",
+        "sai",
+        "susd",
+        "tusd",
+        "usdc",
+        "usdk",
+        "usdp",
+        "usdt_eth"
+      ],
+      "exchange": [
+        "aax",
+        "all_exchange",
+        "ascendex",
+        "bgogo",
+        "bibox",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitforex",
+        "bitget",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "btse",
+        "bw_com",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinex",
+        "coinone",
+        "coinsbit",
+        "cointiger",
+        "crypto_com",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "hitbtc",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "paribu",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "whitebit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/stablecoin/exchange-flows/inflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "token": [
+        "all_token",
+        "busd",
+        "dai",
+        "gusd",
+        "husd",
+        "sai",
+        "susd",
+        "tusd",
+        "usdc",
+        "usdk",
+        "usdp",
+        "usdt_eth"
+      ],
+      "exchange": [
+        "aax",
+        "all_exchange",
+        "ascendex",
+        "bgogo",
+        "bibox",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitforex",
+        "bitget",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "btse",
+        "bw_com",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinex",
+        "coinone",
+        "coinsbit",
+        "cointiger",
+        "crypto_com",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "hitbtc",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "paribu",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "whitebit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/stablecoin/exchange-flows/outflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "token": [
+        "all_token",
+        "busd",
+        "dai",
+        "gusd",
+        "husd",
+        "sai",
+        "susd",
+        "tusd",
+        "usdc",
+        "usdk",
+        "usdp",
+        "usdt_eth"
+      ],
+      "exchange": [
+        "aax",
+        "all_exchange",
+        "ascendex",
+        "bgogo",
+        "bibox",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitforex",
+        "bitget",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "btse",
+        "bw_com",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinex",
+        "coinone",
+        "coinsbit",
+        "cointiger",
+        "crypto_com",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "hitbtc",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "paribu",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "whitebit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/stablecoin/exchange-flows/transactions-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "token": [
+        "all_token",
+        "busd",
+        "dai",
+        "gusd",
+        "husd",
+        "sai",
+        "susd",
+        "tusd",
+        "usdc",
+        "usdk",
+        "usdp",
+        "usdt_eth"
+      ],
+      "exchange": [
+        "aax",
+        "all_exchange",
+        "ascendex",
+        "bgogo",
+        "bibox",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitforex",
+        "bitget",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "btse",
+        "bw_com",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinex",
+        "coinone",
+        "coinsbit",
+        "cointiger",
+        "crypto_com",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "hitbtc",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "paribu",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "whitebit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/stablecoin/exchange-flows/addresses-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "token": [
+        "all_token",
+        "busd",
+        "dai",
+        "gusd",
+        "husd",
+        "sai",
+        "susd",
+        "tusd",
+        "usdc",
+        "usdk",
+        "usdp",
+        "usdt_eth"
+      ],
+      "exchange": [
+        "aax",
+        "all_exchange",
+        "ascendex",
+        "bgogo",
+        "bibox",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitforex",
+        "bitget",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "btse",
+        "bw_com",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinex",
+        "coinone",
+        "coinsbit",
+        "cointiger",
+        "crypto_com",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "hitbtc",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "paribu",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "whitebit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/stablecoin/market-data/price-ohlcv",
+    "parameters": {
+      "window": [
+        "block",
+        "min",
+        "hour",
+        "day"
+      ],
+      "token": [
+        "busd",
+        "dai",
+        "sai",
+        "tusd",
+        "usdc",
+        "usdp",
+        "usdt_eth",
+        "usdt_omni",
+        "ust"
+      ],
+      "market": [
+        "spot"
+      ],
+      "exchange": [
+        "all_exchange"
+      ]
+    }
+  },
+  {
+    "path": "/v1/stablecoin/market-data/capitalization",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ],
+      "token": [
+        "dai",
+        "sai",
+        "tusd",
+        "usdc",
+        "usdp",
+        "usdt_eth",
+        "usdt_omni"
+      ]
+    }
+  },
+  {
+    "path": "/v1/stablecoin/network-data/supply",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ],
+      "token": [
+        "all_token",
+        "dai",
+        "sai",
+        "tusd",
+        "usdc",
+        "usdp",
+        "usdt_eth",
+        "usdt_omni"
+      ]
+    }
+  },
+  {
+    "path": "/v1/stablecoin/network-data/events-count",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ],
+      "token": [
+        "all_token",
+        "dai",
+        "sai",
+        "tusd",
+        "usdc",
+        "usdp",
+        "usdt_eth",
+        "usdt_omni"
+      ]
+    }
+  },
+  {
+    "path": "/v1/stablecoin/network-data/tokens-transferred",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ],
+      "token": [
+        "all_token",
+        "dai",
+        "sai",
+        "tusd",
+        "usdc",
+        "usdp",
+        "usdt_eth",
+        "usdt_omni"
+      ]
+    }
+  },
+  {
+    "path": "/v1/stablecoin/network-data/addresses-count",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ],
+      "token": [
+        "all_token",
+        "dai",
+        "sai",
+        "tusd",
+        "usdc",
+        "usdp",
+        "usdt_eth",
+        "usdt_omni"
+      ]
+    }
+  },
+  {
+    "path": "/v1/stablecoin/flow-indicator/exchange-supply-ratio",
+    "parameters": {
+      "window": [
+        "block",
+        "day"
+      ],
+      "exchange": [
+        "aax",
+        "all_exchange",
+        "ascendex",
+        "bgogo",
+        "bibox",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitforex",
+        "bitget",
+        "bitmart",
+        "bitmex",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "btse",
+        "bw_com",
+        "bybit",
+        "cex_io",
+        "coinbase_advanced",
+        "coinex",
+        "coinone",
+        "coinsbit",
+        "cointiger",
+        "crypto_com",
+        "dcoin",
+        "deribit",
+        "derivative_exchange",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "hitbtc",
+        "htx_global",
+        "indodax",
+        "itbit",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "paribu",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "upbit",
+        "whitebit",
+        "zb_com"
+      ],
+      "token": [
+        "dai",
+        "sai",
+        "tusd",
+        "usdc",
+        "usdp",
+        "usdt_eth"
+      ]
+    }
+  },
+  {
+    "path": "/v1/erc20/status/entity-list",
+    "parameters": {
+      "token": [
+        "1inch",
+        "aave",
+        "agld",
+        "alcx",
+        "alice",
+        "amp",
+        "ankr",
+        "axs",
+        "bal",
+        "bat",
+        "blz",
+        "bnt",
+        "chz",
+        "cocos",
+        "comp",
+        "crv",
+        "dar",
+        "dego",
+        "dodo",
+        "dydx",
+        "enj",
+        "ens",
+        "ern",
+        "fet",
+        "ftt",
+        "gala",
+        "ghst",
+        "grt",
+        "gtc",
+        "hot",
+        "ilv",
+        "jasmy",
+        "knc",
+        "link",
+        "mana",
+        "mask",
+        "matic",
+        "mc",
+        "mkr",
+        "nmr",
+        "ocean",
+        "ogn",
+        "omg",
+        "poly",
+        "qnt",
+        "sand",
+        "shib",
+        "skl",
+        "slp",
+        "snx",
+        "srm",
+        "storj",
+        "sushi",
+        "tribe",
+        "uma",
+        "uni",
+        "vgx",
+        "yfi",
+        "ygg",
+        "zrx"
+      ],
+      "type": [
+        "exchange"
+      ]
+    }
+  },
+  {
+    "path": "/v1/erc20/exchange-flows/reserve",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "token": [
+        "1inch",
+        "aave",
+        "agld",
+        "alcx",
+        "alice",
+        "amp",
+        "ankr",
+        "axs",
+        "bal",
+        "bat",
+        "blz",
+        "bnt",
+        "chz",
+        "cocos",
+        "comp",
+        "crv",
+        "dar",
+        "dego",
+        "dodo",
+        "dydx",
+        "enj",
+        "ens",
+        "ern",
+        "fet",
+        "ftt",
+        "gala",
+        "ghst",
+        "grt",
+        "gtc",
+        "hot",
+        "ilv",
+        "jasmy",
+        "knc",
+        "link",
+        "mana",
+        "mask",
+        "matic",
+        "mc",
+        "mkr",
+        "nmr",
+        "ocean",
+        "ogn",
+        "omg",
+        "poly",
+        "qnt",
+        "sand",
+        "shib",
+        "skl",
+        "slp",
+        "snx",
+        "srm",
+        "storj",
+        "sushi",
+        "tribe",
+        "uma",
+        "uni",
+        "vgx",
+        "yfi",
+        "ygg",
+        "zrx"
+      ],
+      "exchange": [
+        "aax",
+        "abcc",
+        "all_exchange",
+        "ascendex",
+        "bibox",
+        "bigone",
+        "biki_com",
+        "bilaxy",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "btse",
+        "bw_com",
+        "bybit",
+        "cashierest",
+        "cat_ex",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbit",
+        "coinex",
+        "coinhako",
+        "coinlist_pro",
+        "coinmetro",
+        "coinone",
+        "cointiger",
+        "coss",
+        "crex24",
+        "crypto_com",
+        "derivative_exchange",
+        "digifinex",
+        "eterbase",
+        "exmo",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hitbtc",
+        "hoo_com",
+        "hotbit",
+        "htx_global",
+        "idex",
+        "indodax",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "otcbtc",
+        "paribu",
+        "peatio",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "tidex",
+        "topbtc",
+        "upbit",
+        "whitebit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/erc20/exchange-flows/netflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "token": [
+        "1inch",
+        "aave",
+        "agld",
+        "alcx",
+        "alice",
+        "amp",
+        "ankr",
+        "axs",
+        "bal",
+        "bat",
+        "blz",
+        "bnt",
+        "chz",
+        "cocos",
+        "comp",
+        "crv",
+        "dar",
+        "dego",
+        "dodo",
+        "dydx",
+        "enj",
+        "ens",
+        "ern",
+        "fet",
+        "ftt",
+        "gala",
+        "ghst",
+        "grt",
+        "gtc",
+        "hot",
+        "ilv",
+        "jasmy",
+        "knc",
+        "link",
+        "mana",
+        "mask",
+        "matic",
+        "mc",
+        "mkr",
+        "nmr",
+        "ocean",
+        "ogn",
+        "omg",
+        "poly",
+        "qnt",
+        "sand",
+        "shib",
+        "skl",
+        "slp",
+        "snx",
+        "srm",
+        "storj",
+        "sushi",
+        "tribe",
+        "uma",
+        "uni",
+        "vgx",
+        "yfi",
+        "ygg",
+        "zrx"
+      ],
+      "exchange": [
+        "aax",
+        "abcc",
+        "all_exchange",
+        "ascendex",
+        "bibox",
+        "bigone",
+        "biki_com",
+        "bilaxy",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "btse",
+        "bw_com",
+        "bybit",
+        "cashierest",
+        "cat_ex",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbit",
+        "coinex",
+        "coinhako",
+        "coinlist_pro",
+        "coinmetro",
+        "coinone",
+        "cointiger",
+        "coss",
+        "crex24",
+        "crypto_com",
+        "derivative_exchange",
+        "digifinex",
+        "eterbase",
+        "exmo",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hitbtc",
+        "hoo_com",
+        "hotbit",
+        "htx_global",
+        "idex",
+        "indodax",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "otcbtc",
+        "paribu",
+        "peatio",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "tidex",
+        "topbtc",
+        "upbit",
+        "whitebit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/erc20/exchange-flows/inflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "token": [
+        "1inch",
+        "aave",
+        "agld",
+        "alcx",
+        "alice",
+        "amp",
+        "ankr",
+        "axs",
+        "bal",
+        "bat",
+        "blz",
+        "bnt",
+        "chz",
+        "cocos",
+        "comp",
+        "crv",
+        "dar",
+        "dego",
+        "dodo",
+        "dydx",
+        "enj",
+        "ens",
+        "ern",
+        "fet",
+        "ftt",
+        "gala",
+        "ghst",
+        "grt",
+        "gtc",
+        "hot",
+        "ilv",
+        "jasmy",
+        "knc",
+        "link",
+        "mana",
+        "mask",
+        "matic",
+        "mc",
+        "mkr",
+        "nmr",
+        "ocean",
+        "ogn",
+        "omg",
+        "poly",
+        "qnt",
+        "sand",
+        "shib",
+        "skl",
+        "slp",
+        "snx",
+        "srm",
+        "storj",
+        "sushi",
+        "tribe",
+        "uma",
+        "uni",
+        "vgx",
+        "yfi",
+        "ygg",
+        "zrx"
+      ],
+      "exchange": [
+        "aax",
+        "abcc",
+        "all_exchange",
+        "ascendex",
+        "bibox",
+        "bigone",
+        "biki_com",
+        "bilaxy",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "btse",
+        "bw_com",
+        "bybit",
+        "cashierest",
+        "cat_ex",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbit",
+        "coinex",
+        "coinhako",
+        "coinlist_pro",
+        "coinmetro",
+        "coinone",
+        "cointiger",
+        "coss",
+        "crex24",
+        "crypto_com",
+        "derivative_exchange",
+        "digifinex",
+        "eterbase",
+        "exmo",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hitbtc",
+        "hoo_com",
+        "hotbit",
+        "htx_global",
+        "idex",
+        "indodax",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "otcbtc",
+        "paribu",
+        "peatio",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "tidex",
+        "topbtc",
+        "upbit",
+        "whitebit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/erc20/exchange-flows/outflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "token": [
+        "1inch",
+        "aave",
+        "agld",
+        "alcx",
+        "alice",
+        "amp",
+        "ankr",
+        "axs",
+        "bal",
+        "bat",
+        "blz",
+        "bnt",
+        "chz",
+        "cocos",
+        "comp",
+        "crv",
+        "dar",
+        "dego",
+        "dodo",
+        "dydx",
+        "enj",
+        "ens",
+        "ern",
+        "fet",
+        "ftt",
+        "gala",
+        "ghst",
+        "grt",
+        "gtc",
+        "hot",
+        "ilv",
+        "jasmy",
+        "knc",
+        "link",
+        "mana",
+        "mask",
+        "matic",
+        "mc",
+        "mkr",
+        "nmr",
+        "ocean",
+        "ogn",
+        "omg",
+        "poly",
+        "qnt",
+        "sand",
+        "shib",
+        "skl",
+        "slp",
+        "snx",
+        "srm",
+        "storj",
+        "sushi",
+        "tribe",
+        "uma",
+        "uni",
+        "vgx",
+        "yfi",
+        "ygg",
+        "zrx"
+      ],
+      "exchange": [
+        "aax",
+        "abcc",
+        "all_exchange",
+        "ascendex",
+        "bibox",
+        "bigone",
+        "biki_com",
+        "bilaxy",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "btse",
+        "bw_com",
+        "bybit",
+        "cashierest",
+        "cat_ex",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbit",
+        "coinex",
+        "coinhako",
+        "coinlist_pro",
+        "coinmetro",
+        "coinone",
+        "cointiger",
+        "coss",
+        "crex24",
+        "crypto_com",
+        "derivative_exchange",
+        "digifinex",
+        "eterbase",
+        "exmo",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hitbtc",
+        "hoo_com",
+        "hotbit",
+        "htx_global",
+        "idex",
+        "indodax",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "otcbtc",
+        "paribu",
+        "peatio",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "tidex",
+        "topbtc",
+        "upbit",
+        "whitebit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/erc20/exchange-flows/transactions-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "token": [
+        "1inch",
+        "aave",
+        "agld",
+        "alcx",
+        "alice",
+        "amp",
+        "ankr",
+        "axs",
+        "bal",
+        "bat",
+        "blz",
+        "bnt",
+        "chz",
+        "cocos",
+        "comp",
+        "crv",
+        "dar",
+        "dego",
+        "dodo",
+        "dydx",
+        "enj",
+        "ens",
+        "ern",
+        "fet",
+        "ftt",
+        "gala",
+        "ghst",
+        "grt",
+        "gtc",
+        "hot",
+        "ilv",
+        "jasmy",
+        "knc",
+        "link",
+        "mana",
+        "mask",
+        "matic",
+        "mc",
+        "mkr",
+        "nmr",
+        "ocean",
+        "ogn",
+        "omg",
+        "poly",
+        "qnt",
+        "sand",
+        "shib",
+        "skl",
+        "slp",
+        "snx",
+        "srm",
+        "storj",
+        "sushi",
+        "tribe",
+        "uma",
+        "uni",
+        "vgx",
+        "yfi",
+        "ygg",
+        "zrx"
+      ],
+      "exchange": [
+        "aax",
+        "abcc",
+        "all_exchange",
+        "ascendex",
+        "bibox",
+        "bigone",
+        "biki_com",
+        "bilaxy",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "btse",
+        "bw_com",
+        "bybit",
+        "cashierest",
+        "cat_ex",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbit",
+        "coinex",
+        "coinhako",
+        "coinlist_pro",
+        "coinmetro",
+        "coinone",
+        "cointiger",
+        "coss",
+        "crex24",
+        "crypto_com",
+        "derivative_exchange",
+        "digifinex",
+        "eterbase",
+        "exmo",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hitbtc",
+        "hoo_com",
+        "hotbit",
+        "htx_global",
+        "idex",
+        "indodax",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "otcbtc",
+        "paribu",
+        "peatio",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "tidex",
+        "topbtc",
+        "upbit",
+        "whitebit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/erc20/exchange-flows/addresses-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "token": [
+        "1inch",
+        "aave",
+        "agld",
+        "alcx",
+        "alice",
+        "amp",
+        "ankr",
+        "axs",
+        "bal",
+        "bat",
+        "blz",
+        "bnt",
+        "chz",
+        "cocos",
+        "comp",
+        "crv",
+        "dar",
+        "dego",
+        "dodo",
+        "dydx",
+        "enj",
+        "ens",
+        "ern",
+        "fet",
+        "ftt",
+        "gala",
+        "ghst",
+        "grt",
+        "gtc",
+        "hot",
+        "ilv",
+        "jasmy",
+        "knc",
+        "link",
+        "mana",
+        "mask",
+        "matic",
+        "mc",
+        "mkr",
+        "nmr",
+        "ocean",
+        "ogn",
+        "omg",
+        "poly",
+        "qnt",
+        "sand",
+        "shib",
+        "skl",
+        "slp",
+        "snx",
+        "srm",
+        "storj",
+        "sushi",
+        "tribe",
+        "uma",
+        "uni",
+        "vgx",
+        "yfi",
+        "ygg",
+        "zrx"
+      ],
+      "exchange": [
+        "aax",
+        "abcc",
+        "all_exchange",
+        "ascendex",
+        "bibox",
+        "bigone",
+        "biki_com",
+        "bilaxy",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "btse",
+        "bw_com",
+        "bybit",
+        "cashierest",
+        "cat_ex",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbit",
+        "coinex",
+        "coinhako",
+        "coinlist_pro",
+        "coinmetro",
+        "coinone",
+        "cointiger",
+        "coss",
+        "crex24",
+        "crypto_com",
+        "derivative_exchange",
+        "digifinex",
+        "eterbase",
+        "exmo",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hitbtc",
+        "hoo_com",
+        "hotbit",
+        "htx_global",
+        "idex",
+        "indodax",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "otcbtc",
+        "paribu",
+        "peatio",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "tidex",
+        "topbtc",
+        "upbit",
+        "whitebit",
+        "zb_com"
+      ]
+    }
+  },
+  {
+    "path": "/v1/erc20/market-data/price-ohlcv",
+    "parameters": {
+      "window": [
+        "block",
+        "min",
+        "hour",
+        "day"
+      ],
+      "token": [
+        "1inch",
+        "aave",
+        "agld",
+        "alcx",
+        "alice",
+        "amp",
+        "ankr",
+        "axs",
+        "bal",
+        "bat",
+        "blz",
+        "bnt",
+        "chz",
+        "cocos",
+        "comp",
+        "crv",
+        "dar",
+        "dego",
+        "dodo",
+        "dydx",
+        "enj",
+        "ens",
+        "ern",
+        "fet",
+        "ftt",
+        "gala",
+        "ghst",
+        "grt",
+        "gtc",
+        "hot",
+        "ilv",
+        "jasmy",
+        "keep",
+        "knc",
+        "link",
+        "lrc",
+        "mana",
+        "mask",
+        "matic",
+        "mc",
+        "mkr",
+        "nmr",
+        "ocean",
+        "ogn",
+        "omg",
+        "poly",
+        "qnt",
+        "sand",
+        "shib",
+        "skl",
+        "slp",
+        "snx",
+        "srm",
+        "storj",
+        "sushi",
+        "tribe",
+        "uma",
+        "uni",
+        "vgx",
+        "yfi",
+        "ygg",
+        "zrx"
+      ],
+      "market": [
+        "spot"
+      ],
+      "exchange": [
+        "all_exchange"
+      ]
+    }
+  },
+  {
+    "path": "/v1/erc20/network-data/supply",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "token": [
+        "1inch",
+        "aave",
+        "ach",
+        "agld",
+        "alcx",
+        "alice",
+        "amp",
+        "ankr",
+        "armor",
+        "axs",
+        "bal",
+        "bat",
+        "blz",
+        "bnt",
+        "chz",
+        "cocos",
+        "comp",
+        "cqt",
+        "cream",
+        "cro",
+        "crv",
+        "dar",
+        "dego",
+        "derc",
+        "dht",
+        "dodo",
+        "dydx",
+        "efi",
+        "enj",
+        "ens",
+        "ern",
+        "ftt",
+        "gala",
+        "ghst",
+        "gno",
+        "gods",
+        "grt",
+        "gt",
+        "gtc",
+        "high",
+        "hmt",
+        "hot",
+        "ht",
+        "ice",
+        "ilv",
+        "imx",
+        "jasmy",
+        "kcs",
+        "keep",
+        "knc",
+        "link",
+        "lqty",
+        "lrc",
+        "mana",
+        "mask",
+        "matic",
+        "mc",
+        "mkr",
+        "mta",
+        "ocean",
+        "ogn",
+        "ohm",
+        "okb",
+        "omg",
+        "pla",
+        "poly",
+        "prom",
+        "psp",
+        "raca",
+        "rbn",
+        "req",
+        "sand",
+        "shib",
+        "skl",
+        "slp",
+        "srm",
+        "storj",
+        "sushi",
+        "temple",
+        "tribe",
+        "uma",
+        "uni",
+        "vgx",
+        "wbtc",
+        "yfi",
+        "ygg",
+        "zrx"
+      ]
+    }
+  },
+  {
+    "path": "/v1/erc20/network-data/velocity",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "token": [
+        "1inch",
+        "aave",
+        "ach",
+        "agld",
+        "alcx",
+        "alice",
+        "amp",
+        "ankr",
+        "armor",
+        "axs",
+        "bal",
+        "bat",
+        "blz",
+        "bnt",
+        "chz",
+        "cocos",
+        "comp",
+        "cqt",
+        "cream",
+        "cro",
+        "crv",
+        "dar",
+        "dego",
+        "derc",
+        "dht",
+        "dodo",
+        "dydx",
+        "efi",
+        "enj",
+        "ens",
+        "ern",
+        "ftt",
+        "gala",
+        "ghst",
+        "gno",
+        "gods",
+        "grt",
+        "gt",
+        "gtc",
+        "high",
+        "hmt",
+        "hot",
+        "ht",
+        "ice",
+        "ilv",
+        "imx",
+        "jasmy",
+        "kcs",
+        "keep",
+        "knc",
+        "link",
+        "lqty",
+        "lrc",
+        "mana",
+        "mask",
+        "matic",
+        "mc",
+        "mkr",
+        "mta",
+        "ocean",
+        "ogn",
+        "ohm",
+        "okb",
+        "omg",
+        "pla",
+        "poly",
+        "prom",
+        "psp",
+        "raca",
+        "rbn",
+        "req",
+        "sand",
+        "shib",
+        "skl",
+        "slp",
+        "srm",
+        "storj",
+        "sushi",
+        "temple",
+        "tribe",
+        "uma",
+        "uni",
+        "vgx",
+        "wbtc",
+        "yfi",
+        "ygg",
+        "zrx"
+      ]
+    }
+  },
+  {
+    "path": "/v1/erc20/network-data/transactions-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "token": [
+        "1inch",
+        "aave",
+        "ach",
+        "agld",
+        "alcx",
+        "alice",
+        "amp",
+        "ankr",
+        "armor",
+        "axs",
+        "bal",
+        "bat",
+        "blz",
+        "bnt",
+        "chz",
+        "cocos",
+        "comp",
+        "cqt",
+        "cream",
+        "cro",
+        "crv",
+        "dar",
+        "dego",
+        "derc",
+        "dht",
+        "dodo",
+        "dydx",
+        "efi",
+        "enj",
+        "ens",
+        "ern",
+        "ftt",
+        "gala",
+        "ghst",
+        "gno",
+        "gods",
+        "grt",
+        "gt",
+        "gtc",
+        "high",
+        "hmt",
+        "hot",
+        "ht",
+        "ice",
+        "ilv",
+        "imx",
+        "jasmy",
+        "kcs",
+        "keep",
+        "knc",
+        "link",
+        "lqty",
+        "lrc",
+        "mana",
+        "mask",
+        "matic",
+        "mc",
+        "mkr",
+        "mta",
+        "ocean",
+        "ogn",
+        "ohm",
+        "okb",
+        "omg",
+        "pla",
+        "poly",
+        "prom",
+        "psp",
+        "raca",
+        "rbn",
+        "req",
+        "sand",
+        "shib",
+        "skl",
+        "slp",
+        "srm",
+        "storj",
+        "sushi",
+        "temple",
+        "tribe",
+        "uma",
+        "uni",
+        "vgx",
+        "wbtc",
+        "yfi",
+        "ygg",
+        "zrx"
+      ]
+    }
+  },
+  {
+    "path": "/v1/erc20/network-data/tokens-transferred-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "token": [
+        "1inch",
+        "aave",
+        "ach",
+        "agld",
+        "alcx",
+        "alice",
+        "amp",
+        "ankr",
+        "armor",
+        "axs",
+        "bal",
+        "bat",
+        "blz",
+        "bnt",
+        "chz",
+        "cocos",
+        "comp",
+        "cqt",
+        "cream",
+        "cro",
+        "crv",
+        "dar",
+        "dego",
+        "derc",
+        "dht",
+        "dodo",
+        "dydx",
+        "efi",
+        "enj",
+        "ens",
+        "ern",
+        "ftt",
+        "gala",
+        "ghst",
+        "gno",
+        "gods",
+        "grt",
+        "gt",
+        "gtc",
+        "high",
+        "hmt",
+        "hot",
+        "ht",
+        "ice",
+        "ilv",
+        "imx",
+        "jasmy",
+        "kcs",
+        "keep",
+        "knc",
+        "link",
+        "lqty",
+        "lrc",
+        "mana",
+        "mask",
+        "matic",
+        "mc",
+        "mkr",
+        "mta",
+        "ocean",
+        "ogn",
+        "ohm",
+        "okb",
+        "omg",
+        "pla",
+        "poly",
+        "prom",
+        "psp",
+        "raca",
+        "rbn",
+        "req",
+        "sand",
+        "shib",
+        "skl",
+        "slp",
+        "srm",
+        "storj",
+        "sushi",
+        "temple",
+        "tribe",
+        "uma",
+        "uni",
+        "vgx",
+        "wbtc",
+        "yfi",
+        "ygg",
+        "zrx"
+      ]
+    }
+  },
+  {
+    "path": "/v1/erc20/network-data/tokens-transferred",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "token": [
+        "1inch",
+        "aave",
+        "ach",
+        "agld",
+        "alcx",
+        "alice",
+        "amp",
+        "ankr",
+        "armor",
+        "axs",
+        "bal",
+        "bat",
+        "blz",
+        "bnt",
+        "chz",
+        "cocos",
+        "comp",
+        "cqt",
+        "cream",
+        "cro",
+        "crv",
+        "dar",
+        "dego",
+        "derc",
+        "dht",
+        "dodo",
+        "dydx",
+        "efi",
+        "enj",
+        "ens",
+        "ern",
+        "ftt",
+        "gala",
+        "ghst",
+        "gno",
+        "gods",
+        "grt",
+        "gt",
+        "gtc",
+        "high",
+        "hmt",
+        "hot",
+        "ht",
+        "ice",
+        "ilv",
+        "imx",
+        "jasmy",
+        "kcs",
+        "keep",
+        "knc",
+        "link",
+        "lqty",
+        "lrc",
+        "mana",
+        "mask",
+        "matic",
+        "mc",
+        "mkr",
+        "mta",
+        "ocean",
+        "ogn",
+        "ohm",
+        "okb",
+        "omg",
+        "pla",
+        "poly",
+        "prom",
+        "psp",
+        "raca",
+        "rbn",
+        "req",
+        "sand",
+        "shib",
+        "skl",
+        "slp",
+        "srm",
+        "storj",
+        "sushi",
+        "temple",
+        "tribe",
+        "uma",
+        "uni",
+        "vgx",
+        "wbtc",
+        "yfi",
+        "ygg",
+        "zrx"
+      ]
+    }
+  },
+  {
+    "path": "/v1/erc20/network-data/addresses-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "token": [
+        "1inch",
+        "aave",
+        "ach",
+        "agld",
+        "alcx",
+        "alice",
+        "amp",
+        "ankr",
+        "armor",
+        "axs",
+        "bal",
+        "bat",
+        "blz",
+        "bnt",
+        "chz",
+        "cocos",
+        "comp",
+        "cqt",
+        "cream",
+        "cro",
+        "crv",
+        "dar",
+        "dego",
+        "derc",
+        "dht",
+        "dodo",
+        "dydx",
+        "efi",
+        "enj",
+        "ens",
+        "ern",
+        "ftt",
+        "gala",
+        "ghst",
+        "gno",
+        "gods",
+        "grt",
+        "gt",
+        "gtc",
+        "high",
+        "hmt",
+        "hot",
+        "ht",
+        "ice",
+        "ilv",
+        "imx",
+        "jasmy",
+        "kcs",
+        "keep",
+        "knc",
+        "link",
+        "lqty",
+        "lrc",
+        "mana",
+        "mask",
+        "matic",
+        "mc",
+        "mkr",
+        "mta",
+        "ocean",
+        "ogn",
+        "ohm",
+        "okb",
+        "omg",
+        "pla",
+        "poly",
+        "prom",
+        "psp",
+        "raca",
+        "rbn",
+        "req",
+        "sand",
+        "shib",
+        "skl",
+        "slp",
+        "srm",
+        "storj",
+        "sushi",
+        "temple",
+        "tribe",
+        "uma",
+        "uni",
+        "vgx",
+        "wbtc",
+        "yfi",
+        "ygg",
+        "zrx"
+      ]
+    }
+  },
+  {
+    "path": "/v1/erc20/flow-indicator/exchange-supply-ratio",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "aax",
+        "abcc",
+        "all_exchange",
+        "ascendex",
+        "bibox",
+        "bigone",
+        "biki_com",
+        "bilaxy",
+        "binance",
+        "binance_us",
+        "bitfinex",
+        "bitforex",
+        "bitget",
+        "bithumb",
+        "bitmart",
+        "bitrue",
+        "bitstamp",
+        "bittrex",
+        "btse",
+        "bw_com",
+        "bybit",
+        "cashierest",
+        "cat_ex",
+        "cex_io",
+        "coinbase_advanced",
+        "coinbit",
+        "coinex",
+        "coinhako",
+        "coinlist_pro",
+        "coinmetro",
+        "coinone",
+        "cointiger",
+        "coss",
+        "crex24",
+        "crypto_com",
+        "derivative_exchange",
+        "digifinex",
+        "eterbase",
+        "exmo",
+        "ftx",
+        "ftx_us",
+        "gate_io",
+        "gemini",
+        "gopax",
+        "hitbtc",
+        "hoo_com",
+        "hotbit",
+        "htx_global",
+        "idex",
+        "indodax",
+        "korbit",
+        "kraken",
+        "kucoin",
+        "latoken",
+        "liquid",
+        "mercatox",
+        "mexc",
+        "okx",
+        "otcbtc",
+        "paribu",
+        "peatio",
+        "phemex",
+        "poloniex",
+        "probit_global",
+        "spot_exchange",
+        "swissborg",
+        "tidex",
+        "topbtc",
+        "upbit",
+        "whitebit",
+        "zb_com"
+      ],
+      "token": [
+        "1inch",
+        "aave",
+        "agld",
+        "alcx",
+        "alice",
+        "amp",
+        "ankr",
+        "axs",
+        "bal",
+        "bat",
+        "blz",
+        "bnt",
+        "chz",
+        "cocos",
+        "comp",
+        "crv",
+        "dar",
+        "dego",
+        "dodo",
+        "dydx",
+        "enj",
+        "ens",
+        "ern",
+        "ftt",
+        "gala",
+        "ghst",
+        "grt",
+        "gtc",
+        "hot",
+        "ilv",
+        "jasmy",
+        "knc",
+        "link",
+        "mana",
+        "mask",
+        "matic",
+        "mc",
+        "mkr",
+        "ocean",
+        "ogn",
+        "omg",
+        "poly",
+        "sand",
+        "shib",
+        "skl",
+        "slp",
+        "srm",
+        "storj",
+        "sushi",
+        "tribe",
+        "uma",
+        "uni",
+        "vgx",
+        "yfi",
+        "ygg",
+        "zrx"
+      ]
+    }
+  },
+  {
+    "path": "/v1/alt/market-data/price-ohlcv",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "token": [
+        "ada",
+        "algo",
+        "ar",
+        "atom",
+        "auto",
+        "avax",
+        "bnb",
+        "cake",
+        "celo",
+        "dash",
+        "dcr",
+        "doge",
+        "dot",
+        "egld",
+        "etc",
+        "fil",
+        "flow",
+        "ftm",
+        "hbar",
+        "hnt",
+        "icp",
+        "iota",
+        "iotx",
+        "klay",
+        "ksm",
+        "luna",
+        "mina",
+        "near",
+        "neo",
+        "one",
+        "qtum",
+        "rose",
+        "rune",
+        "rvn",
+        "sol",
+        "stx",
+        "tfuel",
+        "theta",
+        "trx",
+        "vet",
+        "waves",
+        "waxp",
+        "xec",
+        "xem",
+        "xlm",
+        "xmr",
+        "xtz",
+        "zec"
+      ],
+      "market": [
+        "spot"
+      ],
+      "exchange": [
+        "all_exchange"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/status/entity-list",
+    "parameters": {
+      "type": [
+        "exchange",
+        "miner"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/network-data/addresses-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/network-data/contracts-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/network-data/fees",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/network-data/blockreward",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/network-data/block-bytes",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/network-data/block-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/network-data/block-interval",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/network-data/supply",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/network-data/transactions-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/network-data/tokens-transferred-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/network-data/tokens-transferred",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/network-data/transfer-latency",
+    "parameters": {
+      "window": [
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/market-data/price-ohlcv",
+    "parameters": {
+      "window": [
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/market-data/open-interest",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bitmex",
+        "bybit",
+        "okx"
+      ],
+      "symbol": [
+        "all_symbol",
+        "klay_usd",
+        "klay_usdt"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/market-data/funding-rates",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bitmex",
+        "bybit",
+        "okx"
+      ],
+      "symbol": [
+        "all_symbol",
+        "klay_usd",
+        "klay_usdt"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/market-data/liquidations",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bitmex",
+        "bybit",
+        "okx"
+      ],
+      "symbol": [
+        "all_symbol",
+        "klay_usd",
+        "klay_usdt"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/market-data/capitalization",
+    "parameters": {
+      "window": [
+        "hour",
+        "day",
+        "10min"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/nft/sales-volume",
+    "parameters": {
+      "window": [
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/nft/holders-count",
+    "parameters": {
+      "window": [
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/nft/capitalization",
+    "parameters": {
+      "window": [
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/nft/holders-count-distribution",
+    "parameters": {
+      "window": [
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/nft/holders-value-distribution",
+    "parameters": {
+      "window": [
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/exchange-flows/reserve",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bithumb",
+        "bittrex",
+        "bybit",
+        "coinone",
+        "derivative_exchange",
+        "gate_io",
+        "huobi_global",
+        "korbit",
+        "kucoin",
+        "mexc",
+        "okx",
+        "spot_exchange"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/exchange-flows/transactions-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bithumb",
+        "bittrex",
+        "bybit",
+        "coinone",
+        "derivative_exchange",
+        "gate_io",
+        "huobi_global",
+        "korbit",
+        "kucoin",
+        "mexc",
+        "okx",
+        "spot_exchange"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/exchange-flows/inflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bithumb",
+        "bittrex",
+        "bybit",
+        "coinone",
+        "derivative_exchange",
+        "gate_io",
+        "huobi_global",
+        "korbit",
+        "kucoin",
+        "mexc",
+        "okx",
+        "spot_exchange"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/exchange-flows/outflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bithumb",
+        "bittrex",
+        "bybit",
+        "coinone",
+        "derivative_exchange",
+        "gate_io",
+        "huobi_global",
+        "korbit",
+        "kucoin",
+        "mexc",
+        "okx",
+        "spot_exchange"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/exchange-flows/addresses-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bithumb",
+        "bittrex",
+        "bybit",
+        "coinone",
+        "derivative_exchange",
+        "gate_io",
+        "huobi_global",
+        "korbit",
+        "kucoin",
+        "mexc",
+        "okx",
+        "spot_exchange"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/exchange-flows/netflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bithumb",
+        "bittrex",
+        "bybit",
+        "coinone",
+        "derivative_exchange",
+        "gate_io",
+        "huobi_global",
+        "korbit",
+        "kucoin",
+        "mexc",
+        "okx",
+        "spot_exchange"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/miner-flows/reserve",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "miner": [
+        "ahnlab",
+        "alameda_research",
+        "all_miner",
+        "all_miner_halving",
+        "amorepacific",
+        "aqx",
+        "binance_staking",
+        "celltrion",
+        "everrich",
+        "fsn",
+        "ground_x",
+        "gs_retail",
+        "gumi",
+        "hanwha_systems",
+        "hashed_ozys",
+        "hashkey",
+        "hi_inc",
+        "jump",
+        "kakao_corp",
+        "kakao_entertainment",
+        "kakao_games",
+        "kakao_pay",
+        "kakao_space",
+        "korea_economic_daily",
+        "kracker_labs",
+        "krosslab",
+        "lg_electronics",
+        "lx_international",
+        "maekyung_media_group",
+        "makerdao",
+        "neoply",
+        "netmable",
+        "nft_bank",
+        "pearl_abyss",
+        "post_voyager",
+        "pubg",
+        "sk_networks",
+        "sygnum",
+        "thrust",
+        "ubp",
+        "unknown_miner",
+        "verichains",
+        "wemade",
+        "yeahmobi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/miner-flows/transactions-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "miner": [
+        "ahnlab",
+        "alameda_research",
+        "all_miner",
+        "all_miner_halving",
+        "amorepacific",
+        "aqx",
+        "binance_staking",
+        "celltrion",
+        "everrich",
+        "fsn",
+        "ground_x",
+        "gs_retail",
+        "gumi",
+        "hanwha_systems",
+        "hashed_ozys",
+        "hashkey",
+        "hi_inc",
+        "jump",
+        "kakao_corp",
+        "kakao_entertainment",
+        "kakao_games",
+        "kakao_pay",
+        "kakao_space",
+        "korea_economic_daily",
+        "kracker_labs",
+        "krosslab",
+        "lg_electronics",
+        "lx_international",
+        "maekyung_media_group",
+        "makerdao",
+        "neoply",
+        "netmable",
+        "nft_bank",
+        "pearl_abyss",
+        "post_voyager",
+        "pubg",
+        "sk_networks",
+        "sygnum",
+        "thrust",
+        "ubp",
+        "unknown_miner",
+        "verichains",
+        "wemade",
+        "yeahmobi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/miner-flows/inflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "miner": [
+        "ahnlab",
+        "alameda_research",
+        "all_miner",
+        "all_miner_halving",
+        "amorepacific",
+        "aqx",
+        "binance_staking",
+        "celltrion",
+        "everrich",
+        "fsn",
+        "ground_x",
+        "gs_retail",
+        "gumi",
+        "hanwha_systems",
+        "hashed_ozys",
+        "hashkey",
+        "hi_inc",
+        "jump",
+        "kakao_corp",
+        "kakao_entertainment",
+        "kakao_games",
+        "kakao_pay",
+        "kakao_space",
+        "korea_economic_daily",
+        "kracker_labs",
+        "krosslab",
+        "lg_electronics",
+        "lx_international",
+        "maekyung_media_group",
+        "makerdao",
+        "neoply",
+        "netmable",
+        "nft_bank",
+        "pearl_abyss",
+        "post_voyager",
+        "pubg",
+        "sk_networks",
+        "sygnum",
+        "thrust",
+        "ubp",
+        "unknown_miner",
+        "verichains",
+        "wemade",
+        "yeahmobi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/miner-flows/outflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "miner": [
+        "ahnlab",
+        "alameda_research",
+        "all_miner",
+        "all_miner_halving",
+        "amorepacific",
+        "aqx",
+        "binance_staking",
+        "celltrion",
+        "everrich",
+        "fsn",
+        "ground_x",
+        "gs_retail",
+        "gumi",
+        "hanwha_systems",
+        "hashed_ozys",
+        "hashkey",
+        "hi_inc",
+        "jump",
+        "kakao_corp",
+        "kakao_entertainment",
+        "kakao_games",
+        "kakao_pay",
+        "kakao_space",
+        "korea_economic_daily",
+        "kracker_labs",
+        "krosslab",
+        "lg_electronics",
+        "lx_international",
+        "maekyung_media_group",
+        "makerdao",
+        "neoply",
+        "netmable",
+        "nft_bank",
+        "pearl_abyss",
+        "post_voyager",
+        "pubg",
+        "sk_networks",
+        "sygnum",
+        "thrust",
+        "ubp",
+        "unknown_miner",
+        "verichains",
+        "wemade",
+        "yeahmobi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/miner-flows/addresses-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "miner": [
+        "ahnlab",
+        "alameda_research",
+        "all_miner",
+        "all_miner_halving",
+        "amorepacific",
+        "aqx",
+        "binance_staking",
+        "celltrion",
+        "everrich",
+        "fsn",
+        "ground_x",
+        "gs_retail",
+        "gumi",
+        "hanwha_systems",
+        "hashed_ozys",
+        "hashkey",
+        "hi_inc",
+        "jump",
+        "kakao_corp",
+        "kakao_entertainment",
+        "kakao_games",
+        "kakao_pay",
+        "kakao_space",
+        "korea_economic_daily",
+        "kracker_labs",
+        "krosslab",
+        "lg_electronics",
+        "lx_international",
+        "maekyung_media_group",
+        "makerdao",
+        "neoply",
+        "netmable",
+        "nft_bank",
+        "pearl_abyss",
+        "post_voyager",
+        "pubg",
+        "sk_networks",
+        "sygnum",
+        "thrust",
+        "ubp",
+        "unknown_miner",
+        "verichains",
+        "wemade",
+        "yeahmobi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/miner-flows/netflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "miner": [
+        "ahnlab",
+        "alameda_research",
+        "all_miner",
+        "all_miner_halving",
+        "amorepacific",
+        "aqx",
+        "binance_staking",
+        "celltrion",
+        "everrich",
+        "fsn",
+        "ground_x",
+        "gs_retail",
+        "gumi",
+        "hanwha_systems",
+        "hashed_ozys",
+        "hashkey",
+        "hi_inc",
+        "jump",
+        "kakao_corp",
+        "kakao_entertainment",
+        "kakao_games",
+        "kakao_pay",
+        "kakao_space",
+        "korea_economic_daily",
+        "kracker_labs",
+        "krosslab",
+        "lg_electronics",
+        "lx_international",
+        "maekyung_media_group",
+        "makerdao",
+        "neoply",
+        "netmable",
+        "nft_bank",
+        "pearl_abyss",
+        "post_voyager",
+        "pubg",
+        "sk_networks",
+        "sygnum",
+        "thrust",
+        "ubp",
+        "unknown_miner",
+        "verichains",
+        "wemade",
+        "yeahmobi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/inter-entity-flows/exchange-to-exchange",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "from_exchange": [
+        "all_exchange",
+        "binance",
+        "bithumb",
+        "bittrex",
+        "bybit",
+        "coinone",
+        "derivative_exchange",
+        "gate_io",
+        "huobi_global",
+        "korbit",
+        "kucoin",
+        "mexc",
+        "okx",
+        "spot_exchange"
+      ],
+      "to_exchange": [
+        "all_exchange",
+        "binance",
+        "bithumb",
+        "bittrex",
+        "bybit",
+        "coinone",
+        "derivative_exchange",
+        "gate_io",
+        "huobi_global",
+        "korbit",
+        "kucoin",
+        "mexc",
+        "okx",
+        "spot_exchange"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/inter-entity-flows/miner-to-exchange",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "from_miner": [
+        "ahnlab",
+        "alameda_research",
+        "all_miner",
+        "all_miner_halving",
+        "amorepacific",
+        "aqx",
+        "binance_staking",
+        "celltrion",
+        "everrich",
+        "fsn",
+        "ground_x",
+        "gs_retail",
+        "gumi",
+        "hanwha_systems",
+        "hashed_ozys",
+        "hashkey",
+        "hi_inc",
+        "jump",
+        "kakao_corp",
+        "kakao_entertainment",
+        "kakao_games",
+        "kakao_pay",
+        "kakao_space",
+        "korea_economic_daily",
+        "kracker_labs",
+        "krosslab",
+        "lg_electronics",
+        "lx_international",
+        "maekyung_media_group",
+        "makerdao",
+        "neoply",
+        "netmable",
+        "nft_bank",
+        "pearl_abyss",
+        "post_voyager",
+        "pubg",
+        "sk_networks",
+        "sygnum",
+        "thrust",
+        "ubp",
+        "unknown_miner",
+        "verichains",
+        "wemade",
+        "yeahmobi"
+      ],
+      "to_exchange": [
+        "all_exchange",
+        "binance",
+        "bithumb",
+        "bittrex",
+        "bybit",
+        "coinone",
+        "derivative_exchange",
+        "gate_io",
+        "huobi_global",
+        "korbit",
+        "kucoin",
+        "mexc",
+        "okx",
+        "spot_exchange"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/inter-entity-flows/exchange-to-miner",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "from_exchange": [
+        "all_exchange",
+        "binance",
+        "bithumb",
+        "bittrex",
+        "bybit",
+        "coinone",
+        "derivative_exchange",
+        "gate_io",
+        "huobi_global",
+        "korbit",
+        "kucoin",
+        "mexc",
+        "okx",
+        "spot_exchange"
+      ],
+      "to_miner": [
+        "ahnlab",
+        "alameda_research",
+        "all_miner",
+        "all_miner_halving",
+        "amorepacific",
+        "aqx",
+        "binance_staking",
+        "celltrion",
+        "everrich",
+        "fsn",
+        "ground_x",
+        "gs_retail",
+        "gumi",
+        "hanwha_systems",
+        "hashed_ozys",
+        "hashkey",
+        "hi_inc",
+        "jump",
+        "kakao_corp",
+        "kakao_entertainment",
+        "kakao_games",
+        "kakao_pay",
+        "kakao_space",
+        "korea_economic_daily",
+        "kracker_labs",
+        "krosslab",
+        "lg_electronics",
+        "lx_international",
+        "maekyung_media_group",
+        "makerdao",
+        "neoply",
+        "netmable",
+        "nft_bank",
+        "pearl_abyss",
+        "post_voyager",
+        "pubg",
+        "sk_networks",
+        "sygnum",
+        "thrust",
+        "ubp",
+        "unknown_miner",
+        "verichains",
+        "wemade",
+        "yeahmobi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/klay/inter-entity-flows/miner-to-miner",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day",
+        "10min"
+      ],
+      "from_miner": [
+        "ahnlab",
+        "alameda_research",
+        "all_miner",
+        "all_miner_halving",
+        "amorepacific",
+        "aqx",
+        "binance_staking",
+        "celltrion",
+        "everrich",
+        "fsn",
+        "ground_x",
+        "gs_retail",
+        "gumi",
+        "hanwha_systems",
+        "hashed_ozys",
+        "hashkey",
+        "hi_inc",
+        "jump",
+        "kakao_corp",
+        "kakao_entertainment",
+        "kakao_games",
+        "kakao_pay",
+        "kakao_space",
+        "korea_economic_daily",
+        "kracker_labs",
+        "krosslab",
+        "lg_electronics",
+        "lx_international",
+        "maekyung_media_group",
+        "makerdao",
+        "neoply",
+        "netmable",
+        "nft_bank",
+        "pearl_abyss",
+        "post_voyager",
+        "pubg",
+        "sk_networks",
+        "sygnum",
+        "thrust",
+        "ubp",
+        "unknown_miner",
+        "verichains",
+        "wemade",
+        "yeahmobi"
+      ],
+      "to_miner": [
+        "ahnlab",
+        "alameda_research",
+        "all_miner",
+        "all_miner_halving",
+        "amorepacific",
+        "aqx",
+        "binance_staking",
+        "celltrion",
+        "everrich",
+        "fsn",
+        "ground_x",
+        "gs_retail",
+        "gumi",
+        "hanwha_systems",
+        "hashed_ozys",
+        "hashkey",
+        "hi_inc",
+        "jump",
+        "kakao_corp",
+        "kakao_entertainment",
+        "kakao_games",
+        "kakao_pay",
+        "kakao_space",
+        "korea_economic_daily",
+        "kracker_labs",
+        "krosslab",
+        "lg_electronics",
+        "lx_international",
+        "maekyung_media_group",
+        "makerdao",
+        "neoply",
+        "netmable",
+        "nft_bank",
+        "pearl_abyss",
+        "post_voyager",
+        "pubg",
+        "sk_networks",
+        "sygnum",
+        "thrust",
+        "ubp",
+        "unknown_miner",
+        "verichains",
+        "wemade",
+        "yeahmobi"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/entity-flow/reserve",
+    "parameters": {
+      "window": [
+        "hour",
+        "day",
+        "10min"
+      ],
+      "exchange": [
+        "binance",
+        "bitfinex",
+        "bitget",
+        "bithumb",
+        "bitstamp",
+        "bybit",
+        "gate_io",
+        "htx_global",
+        "kucoin",
+        "okx",
+        "upbit"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/entity-flow/share",
+    "parameters": {
+      "window": [
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "binance",
+        "bitfinex",
+        "bitget",
+        "bithumb",
+        "bitstamp",
+        "bybit",
+        "gate_io",
+        "htx_global",
+        "kucoin",
+        "okx",
+        "upbit"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/entity-flow/transactions-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "binance",
+        "bitfinex",
+        "bitget",
+        "bithumb",
+        "bitstamp",
+        "bybit",
+        "gate_io",
+        "htx_global",
+        "kucoin",
+        "okx",
+        "upbit"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/entity-flow/inflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "binance",
+        "bitfinex",
+        "bitget",
+        "bithumb",
+        "bitstamp",
+        "bybit",
+        "gate_io",
+        "htx_global",
+        "kucoin",
+        "okx",
+        "upbit"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/entity-flow/outflow",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "binance",
+        "bitfinex",
+        "bitget",
+        "bithumb",
+        "bitstamp",
+        "bybit",
+        "gate_io",
+        "htx_global",
+        "kucoin",
+        "okx",
+        "upbit"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/entity-flow/addresses-count",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "binance",
+        "bitfinex",
+        "bitget",
+        "bithumb",
+        "bitstamp",
+        "bybit",
+        "gate_io",
+        "htx_global",
+        "kucoin",
+        "okx",
+        "upbit"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/entity-flow/whale-movements",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/flow-indicator/exchange-inflow-value-distribution",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "binance",
+        "bitfinex",
+        "bitget",
+        "bithumb",
+        "bitstamp",
+        "bybit",
+        "gate_io",
+        "htx_global",
+        "kucoin",
+        "okx",
+        "upbit"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/flow-indicator/exchange-outflow-value-distribution",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "binance",
+        "bitfinex",
+        "bitget",
+        "bithumb",
+        "bitstamp",
+        "bybit",
+        "gate_io",
+        "htx_global",
+        "kucoin",
+        "okx",
+        "upbit"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/flow-indicator/exchange-inflow-count-value-distribution",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "binance",
+        "bitfinex",
+        "bitget",
+        "bithumb",
+        "bitstamp",
+        "bybit",
+        "gate_io",
+        "htx_global",
+        "kucoin",
+        "okx",
+        "upbit"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/flow-indicator/exchange-outflow-count-value-distribution",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "binance",
+        "bitfinex",
+        "bitget",
+        "bithumb",
+        "bitstamp",
+        "bybit",
+        "gate_io",
+        "htx_global",
+        "kucoin",
+        "okx",
+        "upbit"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/flow-indicator/exchange-supply-ratio",
+    "parameters": {
+      "window": [
+        "block",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "binance",
+        "bitfinex",
+        "bitget",
+        "bithumb",
+        "bitstamp",
+        "bybit",
+        "gate_io",
+        "htx_global",
+        "kucoin",
+        "okx",
+        "upbit"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/market-data/price-ohlcv",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "market": [
+        "spot",
+        "perpetual"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "binance_us",
+        "coinbase_advanced",
+        "bitfinex",
+        "htx_global",
+        "kucoin",
+        "kraken",
+        "deribit",
+        "okx",
+        "bitmex"
+      ],
+      "symbol": [
+        "xrp_usd",
+        "xrp_usdt",
+        "xrp_usdc",
+        "xrp_fdusd",
+        "xrp_btc",
+        "xrp_eth",
+        "xrp_bnb",
+        "xrp_rub",
+        "xrp_tusd",
+        "xrp_aud",
+        "xrp_eur"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/market-data/open-interest",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bybit",
+        "bitmex",
+        "htx_global",
+        "kraken",
+        "okx",
+        "bitfinex"
+      ],
+      "symbol": [
+        "all_symbol",
+        "xrp_usd",
+        "xrp_usdt"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/market-data/funding-rates",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bybit",
+        "bitmex",
+        "htx_global",
+        "okx"
+      ],
+      "symbol": [
+        "all_symbol",
+        "xrp_usd",
+        "xrp_usdt"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/market-data/taker-buy-sell-stats",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bybit",
+        "bitmex",
+        "htx_global",
+        "okx"
+      ],
+      "symbol": [
+        "all_symbol",
+        "xrp_usd",
+        "xrp_usdt"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/market-data/liquidations",
+    "parameters": {
+      "window": [
+        "min",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "bybit",
+        "bitmex",
+        "htx_global",
+        "okx",
+        "bitfinex"
+      ],
+      "symbol": [
+        "all_symbol",
+        "xrp_usd",
+        "xrp_usdt"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/market-data/capitalization",
+    "parameters": {
+      "window": [
+        "hour",
+        "day"
+      ]
+    }
+  },
+  {
+    "path": "/v1/xrp/market-data/estimated-leverage-ratio",
+    "parameters": {
+      "window": [
+        "10min",
+        "hour",
+        "day"
+      ],
+      "exchange": [
+        "all_exchange",
+        "binance",
+        "binance_us",
+        "coinbase_advanced",
+        "bitfinex",
+        "htx_global",
+        "kucoin",
+        "kraken",
+        "deribit",
+        "okx",
+        "bitmex"
+      ]
+    }
+  }
+]

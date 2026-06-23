@@ -1,0 +1,141 @@
+---
+title: What is ADRS
+description: Provides re-usable, extensible, atomic primitives (e.g. modeling, data loading, signal generation) to ease alpha research and discovery.
+icon: CircleQuestionMark
+---
+
+import { Mermaid } from '@/components/mermaid';
+
+ADRS stands for **Alpha Development Research System**, created out of a need to unify the tooling quant researchers use 
+at Balaena Quant to reduce boilerplate code eg. data loading, modeling, signal generation and backtest evaluation. On 
+top of that, ADRS defines standardized report formats (in [parquet](https://parquet.apache.org)) to provide a fair 
+benchmark to aid comparing performance metrics of various alphas and portfolio**s.**
+
+## Philosophy
+
+### Extensible
+
+#### DataLoader
+
+The components in *ADRS* are created in a way such that it can be easily extended with the users' custom behavior, take 
+for example the `DataLoader`, one can simply attach one or many handler function to handle custom data topic. 
+
+For instance, the example below shows how one handle a custom topic by loading a parquet file from the filesystem. Note 
+that the handler expects a return type of `pl.DataFrame` with a `start_time` column with data type of `pl.DateTime[ms]` 
+in UTC.
+
+```py
+# NOTE: This function dictates the handling for custom topic which we used here.
+#       Override this with your own handler to load from file / download from external APIs.
+async def binance_custom(topic: Topic, start_time: datetime, end_time: datetime):
+    # Only handle the topic we want
+    if topic != "binance-custom|candle?symbol=BTCUSDT&interval=1h":
+        pass
+
+    return pl.read_parquet("./my_data/custom_data.parquet")
+
+dataloader = DataLoader(
+    data_dir="outdir",
+    credentials={"cybotrade_api_key": os.getenv("DATASOURCE_API_KEY")},
+    handlers=[binance_custom],
+)
+df = await dataloader.load(
+    topic="binance-custom|candle?symbol=BTCUSDT&interval=1h", # use the custom topic
+    start_time=datetime.fromisoformat("2025-01-01T00:00:00Z"),
+    end_time=datetime.fromisoformat("2026-01-01T00:00:00Z")
+)
+```
+
+A more detailed example can be found [here](https://github.com/balaenaquant/adrs/blob/main/examples/alpha_with_external_data.py).
+
+#### Alpha
+
+In addition, the `Alpha` class can also be easily extended to do whatever the user desires, let's say integrating 
+machine-learning (ML) libraries for modeling the data or inferencing a neural-network for example.
+
+The following example uses [LinearRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) 
+from [scikit-learn](https://scikit-learn.org) to predict the next close price based on the first 1000 datapoints and 
+enter long/short position based on the comparison of predicted price vs current price. 
+
+<Callout type="warning" title="Caution on using example code">
+    Note that the model here is for demonstration purposes only, do not use it for trading unless you know what you are 
+    doing.
+</Callout>
+
+```py
+import polars as pl
+from adrs import Alpha
+from adrs.data import DataInfo
+from sklearn.linear_model import LinearRegression
+
+class LinearRegressionAlpha(Alpha):
+    def __init__(self) -> None:
+        super().__init__(
+            id="linear_regression_alpha",
+            data_infos=[
+                DataInfo(
+                    topic="binance-linear|candle?symbol=BTCUSDT&interval=1h",
+                    columns=[DataColumn(src="close", dst="close")],
+                    lookback_size=0,
+                ),
+            ],
+        )
+
+    @override
+    def next(self, data_df: pl.DataFrame) -> pl.DataFrame:
+        # Get the first 1k timestamps and close price as numpy arrays
+        X = data_df[:1000].select(pl.col("start_time").dt.epoch(time_unit="s")).to_numpy()
+        y = data_df[:1000].select(pl.col("close")).to_numpy()
+
+        # Fit a linear regression model
+        reg = LinearRegression().fit(X, y)
+
+        # Enter position based on next predicted price
+        signals = []
+        for i, row in enumerate(data_df.iter_rows(named=True)):
+            if i < 1000:
+                signals.append(0)
+
+            next_price = reg.predict([row["start_time"].timestamp()])[0]
+
+            if next_price > row["close"]:
+                signals.append(1)
+            elif next_price < row["close"]:
+                signals.append(-1)
+            else:
+                signals.append(0)
+
+        return data_df.select(
+            pl.col("start_time"),
+            pl.col("close").alias("data"),
+            pl.Series(name="signal", values=signals)
+        )
+```
+
+### Performant
+
+Assuming all the operations performed in `next` are vectorized. Running backtest is incredibly fast due to leveraging 
+modern CPUs' **SIMD (Single Instruction Multiple Data)** instructions, read more about the difference between vectorized 
+vs non-vectorized backtest [here](https://medium.com/@jofre44/vectorization-of-a-trading-strategy-for-backtesting-d4fc4e066a43).
+
+Internally at Balaena Quant, we extend the `Alpha` class to perform large-scale permutations, model-training, etc. in a 
+vectorized manner. The performance gain compared to traditional loops is night-and-day.
+
+## When to use ADRS
+
+### Alpha idea generation
+
+ADRS provide tools and building blocks for researchers to express their ideas in code. By doing so, they construct a 
+mathematical proof to validate whether their ideas are valid based on evaluation of the model from historical data. 
+
+```mermaid
+graph LR;
+A[Idea];
+B["Model (Alpha)"];
+C["Proof (Backtest)"];
+A --> B;
+B --> C;
+```
+
+For more information on quant trading, see this [introduction video](https://www.youtube.com/watch?v=Uj9_O9o0Agw) by 
+[memlabs](https://www.youtube.com/@memlabs-research).

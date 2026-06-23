@@ -1,0 +1,99 @@
+---
+title: Writing an alpha
+description: Guide to write an alpha in ADRS.
+---
+
+Given the mental model and prior knowledge in [concept](/docs/adrs/alpha/concept), this section shows you how to turn an 
+alpha idea into code.
+
+### Alpha hypothesis
+
+Continuing from the previous example, let's say we assume that 
+
+> When there is a huge +ve difference in the price between two exchanges then we expect that the overall price of that 
+asset is more likely to go up.
+
+This statement above is our **"alpha hypothesis"**. Once we have a hypothesis we can start writing our alpha.
+
+## Writing 
+
+### Defining data sources
+
+Now we define our alpha:
+
+```py
+from adrs import Alpha
+from adrs.data import DataInfo, DataColumn, Datamap
+
+class PriceDiffAlpha(Alpha):
+    def __init__(self):
+        super().__init__(
+            id="binance_bybit_diff",
+            data_infos=[
+                DataInfo(
+                    topic="binance-linear|candle?symbol=BTCUSDT&interval=1h",
+                    columns=[DataColumn(src="close", dst="close_binance")],
+                    lookback_size=0,
+                ),
+                DataInfo(
+                    topic="bybit-linear|candle?symbol=BTCUSDT&interval=1h",
+                    columns=[DataColumn(src="close", dst="close_bybit")],
+                    lookback_size=0,
+                ),
+            ],
+        )
+```
+
+All alphas has to extend the `Alpha` base class and call `super().__init__()` when initialising the class. 
+
+- `id`: A unique identifier for the alpha.
+- `data_infos`: An array of data sources for the alpha.
+
+For more information on what `DataInfo` is, see [data](/adrs/docs/data).
+
+### Modeling
+
+Based on the previous model $$\; y = x_1 - x_2$$
+
+> <div className="not-prose">$$x_1 = $$ BTC price on Exchange A<br/>$$x_2 = $$ BTC price on Exchange B</div>
+
+We add [*z-score*](https://www.investopedia.com/terms/z/zscore.asp) into the model and use that to tell the magnitude 
+of price difference across two exchanges which the model then becomes $$\; y = zscore(x_1 - x_2)$$. In code, we can 
+describe it as follows:
+
+```py
+import polars as pl
+
+def rolling_zscore(expr: pl.Expr, window: int, ddof: int = 1) -> pl.Expr:
+    return (expr - expr.rolling_mean(window)) / expr.rolling_std(window, ddof=ddof)
+
+class PriceDiffAlpha(Alpha):
+    def next(self, data_df: pl.DataFrame) -> pl.DataFrame:
+        # modeling
+        df = data_df.with_columns(
+            rolling_zscore(
+                pl.col("close_binance") - pl.col("close_bybit"), window=100
+            ).alias("zscore")
+        ).filter(pl.col("zscore").is_finite())
+
+        # signaling
+        df = df.with_columns(
+            pl.when(pl.col("zscore") >= self.long_entry_threshold)
+            .then(1)
+            .when(pl.col("zscore") <= self.long_exit_threshold)
+            .then(0)
+            .otherwise(None)
+            .forward_fill()
+            .fill_null(strategy="zero")
+            .alias("signal")
+        )
+
+        return df
+```
+
+From the code sample above, in the `next()` method, we compute the difference of close prices on both exchanges and 
+pass it into our `rolling_zscore` function to compute the z-score over a rolling window of 100 periods. Once we have the 
+z-score, we then generate our trading signal based on two thresholds namely `long_entry_threshold` and `long_exit_threshold`. 
+If the z-score is greater than or equal to `long_entry_threshold`, we enter a long position (signal = 1), if it is less than
+or equal to `long_exit_threshold`, we exit our position (signal = 0).
+

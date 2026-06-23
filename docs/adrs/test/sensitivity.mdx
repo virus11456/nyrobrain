@@ -1,0 +1,143 @@
+---
+title: Sensitivity
+description: Robustness testing by systematically varying alpha parameters around their baseline values.
+---
+
+## What is sensitivity testing?
+
+A strong alpha should not depend on a very precise parameter value to be profitable. If a small change in `window`
+from `40` to `42` causes the Sharpe ratio to collapse, the alpha is said to be *over-fitted* or *fragile*.
+
+**Sensitivity testing** answers the question: *how robust is this alpha to small perturbations of its parameters?*
+
+It works by:
+
+1. Taking each parameter's baseline value.
+2. Generating `num_steps` variations above and below it (spaced by `gap_percent`).
+3. Running a full backtest for every resulting permutation.
+4. Summarising the distribution of Sharpe ratios across all permutations.
+
+---
+
+## SensitivityParameter
+
+`SensitivityParameter` constrains the variation space for a single parameter:
+
+```py
+from adrs.tests import SensitivityParameter
+
+SensitivityParameter(
+    min_val=10,    # the parameter must not go below 10
+    min_gap=5,     # successive steps must differ by at least 5
+)
+```
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `min_val` | `int \| float \| timedelta \| None` | `None` | Lower bound — variations below this value are discarded |
+| `min_gap` | `int \| float \| timedelta \| None` | `None` | Minimum distance between consecutive variations |
+
+---
+
+## Sensitivity
+
+```py
+from adrs.tests import Sensitivity, SensitivityParameter
+
+sensitivity = Sensitivity(
+    alpha=alpha,
+    parameters={
+        "window": SensitivityParameter(min_val=10, min_gap=25),
+        "long_entry_threshold": SensitivityParameter(min_val=0.1),
+    },
+    gap_percent=0.15,   # each step is ±15 % of the baseline value
+    num_steps=3,        # 3 steps above and 3 below → up to 7 permutations per parameter
+)
+```
+
+### Constructor
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `alpha` | `Alpha` | — | The alpha instance to test |
+| `parameters` | `dict[str, SensitivityParameter]` | — | Which parameters to vary and their constraints |
+| `gap_percent` | `float` | `0.15` | Fractional step size relative to the baseline value |
+| `num_steps` | `int` | `3` | Number of steps in each direction from the baseline |
+| `search` | `Search` | `GridSearch()` | Strategy for sampling the variation space |
+
+### Running the test
+
+```py
+results = sensitivity.test(
+    evaluator=evaluator,
+    base_asset="BTC",
+    datamap=datamap,
+    data_df=data_df,
+    start_time=start_time,
+    end_time=end_time,
+    fees=fees,
+    price_shift=10,
+)
+
+for params, perf, df in results:
+    print(params, perf.sharpe_ratio)
+```
+
+`sensitivity.test()` accepts the same keyword arguments as `alpha.backtest()` and returns:
+
+```py
+list[tuple[dict[str, AllowedParam], Performance, pl.DataFrame]]
+```
+
+Each tuple is `(parameter_set, performance, result_df)` for one permutation.
+
+---
+
+## SensitivitySharpeRatioSummary
+
+When you generate an `AlphaReportV1`, sensitivity results are automatically summarised into a
+`SensitivitySharpeRatioSummary`:
+
+| Field | Type | Description |
+|---|---|---|
+| `best_param` | `dict` | Parameter set that produced the best Sharpe ratio |
+| `mean` | `float` | Mean Sharpe ratio across all permutations |
+| `median` | `float` | Median Sharpe ratio |
+| `std` | `float` | Standard deviation of Sharpe ratios |
+| `min` | `float` | Worst Sharpe ratio |
+| `max` | `float` | Best Sharpe ratio |
+| `p25` | `float` | 25th percentile |
+| `p75` | `float` | 75th percentile |
+| `num_negative` | `int` | Number of permutations with a negative Sharpe ratio |
+| `num_positive` | `int` | Number of permutations with a positive Sharpe ratio |
+| `total_permutations` | `int` | Total permutations evaluated |
+| `score` | `float` | Composite robustness score (see below) |
+
+### Robustness score
+
+The `score` field is a composite metric between `0` and `1` computed as:
+
+$$\text{score} = 0.4 \times \text{consistency} + 0.3 \times \text{mean\_vs\_best} + 0.3 \times \text{win\_rate}$$
+
+Where:
+- **consistency** — based on the coefficient of variation of Sharpe ratios (lower std → higher score)
+- **mean\_vs\_best** — ratio of mean Sharpe to the best Sharpe (penalises outlier-driven results)
+- **win\_rate** — fraction of permutations with a positive Sharpe ratio
+
+A score close to `1.0` indicates the alpha is highly robust to parameter changes.
+
+---
+
+## Example — interpreting results
+
+```py
+print(report.back.sensitivity_sr_summary)
+# SensitivitySharpeRatioSummary(
+#   mean=1.82,  median=1.75,  std=0.31,  min=0.94,  max=2.41,
+#   num_positive=18,  num_negative=0,  total_permutations=18,
+#   score=0.87
+# )
+```
+
+The example above shows: all 18 permutations were profitable (Sharpe > 0), the mean Sharpe of 1.82 is close to
+the best of 2.41, and the standard deviation is modest — a robust result.

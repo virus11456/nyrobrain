@@ -1,0 +1,221 @@
+---
+title: Downloading Data
+description: A step-by-step guide to fetching, caching, and storing market data for your own use.
+---
+
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Accordions, Accordion } from 'fumadocs-ui/components/accordion';
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
+
+This guide walks through every step of getting data out of ADRS and into a format you can work with
+independently — whether that is a local Parquet file, a database, or a custom in-house format.
+
+<Steps>
+<Step>
+
+## Set up a DataLoader
+
+`DataLoader` is the entry-point for all data fetching. It needs a directory to cache downloads and,
+for Datasource data, your API credentials.
+
+```py
+import os
+import asyncio
+from adrs import DataLoader
+
+dataloader = DataLoader(
+    data_dir="data/raw",                              # cache goes here
+    credentials={"cybotrade_api_key": os.getenv("DATASOURCE_API_KEY")}, # {"cybotrade_api_key": "..."}
+)
+```
+
+The cache means every topic/range pair is only downloaded once. Subsequent calls return the cached result
+instantly, so it is safe to re-run scripts without hammering the API.
+
+</Step>
+<Step>
+
+## Choose your data topics
+
+A topic is a string that identifies both the exchange/feed and the query parameters:
+
+```
+binance-spot|candle?symbol=BTCUSDT&interval=1h
+bybit-linear|candle?symbol=BTCUSDT&interval=1m
+coinbase|candle?symbol=BTCUSD&interval=15m
+yfinance|candle?ticker=SPY&interval=1d
+```
+
+Pick the exchanges and intervals you need. In this guide we will download BTC 1-hour candles from
+Binance spot and Bybit linear futures.
+
+</Step>
+<Step>
+
+## Download and inspect
+
+```py
+from datetime import datetime
+
+async def main():
+    start_time = datetime.fromisoformat("2023-01-01T00:00:00Z")
+    end_time   = datetime.fromisoformat("2025-01-01T00:00:00Z")
+
+    df_binance = await dataloader.load(
+        topic="binance-spot|candle?symbol=BTCUSDT&interval=1h",
+        start_time=start_time,
+        end_time=end_time,
+    )
+    print(df_binance.head())
+    # ┌─────────────────────────┬──────────┬──────────┬──────────┬──────────┬─────────────┐
+    # │ start_time              ┆ open     ┆ high     ┆ low      ┆ close    ┆ volume      │
+    # │ ---                     ┆ ---      ┆ ---      ┆ ---      ┆ ---      ┆ ---         │
+    # │ datetime[ms, UTC]       ┆ f64      ┆ f64      ┆ f64      ┆ f64      ┆ f64         │
+    # ╞═════════════════════════╪══════════╪══════════╪══════════╪══════════╪═════════════╡
+    # │ 2023-01-01 00:00:00 UTC ┆ 16541.77 ┆ 16611.13 ┆ 16499.01 ┆ 16537.84 ┆ 1043.21423 │
+
+asyncio.run(main())
+```
+
+All DataFrames returned by `DataLoader` use [Polars](https://pola.rs) and always include a
+`start_time` column typed as `Datetime[ms, UTC]` alongside standard OHLCV columns.
+
+</Step>
+<Step>
+
+## Save to disk
+
+Once you have the DataFrame, use Polars' built-in writers to persist it in whatever format suits you.
+
+```py
+# Parquet — recommended for large datasets, fast to read back
+df_binance.write_parquet("data/btc_binance_1h.parquet")
+
+# CSV — useful for sharing or inspection in spreadsheets
+df_binance.write_csv("data/btc_binance_1h.csv")
+```
+
+Read it back later without touching the network:
+
+```py
+import polars as pl
+
+df = pl.read_parquet("data/btc_binance_1h.parquet")
+```
+
+</Step>
+<Step>
+
+## Download multiple symbols at once
+
+Use `asyncio.gather` to fetch several topics in parallel:
+
+```py
+import asyncio
+
+async def main():
+    start_time = datetime.fromisoformat("2023-01-01T00:00:00Z")
+    end_time   = datetime.fromisoformat("2025-01-01T00:00:00Z")
+
+    topics = [
+        "binance-spot|candle?symbol=BTCUSDT&interval=1h",
+        "binance-spot|candle?symbol=ETHUSDT&interval=1h",
+        "bybit-linear|candle?symbol=BTCUSDT&interval=1m",
+    ]
+
+    results = await asyncio.gather(*[
+        dataloader.load(topic=t, start_time=start_time, end_time=end_time)
+        for t in topics
+    ])
+
+    for topic, df in zip(topics, results):
+        symbol = topic.split("symbol=")[1].split("&")[0]
+        df.write_parquet(f"data/{symbol}.parquet")
+        print(f"✓ {topic}  →  {df.shape[0]:,} rows")
+
+asyncio.run(main())
+```
+
+</Step>
+</Steps>
+
+---
+
+## Using a custom handler
+
+If your data does not come from Datasource — say it lives in an internal database, a vendor CSV, or another
+REST API — register a **custom handler** and `DataLoader` will call it automatically when it sees your topic:
+
+```py
+import polars as pl
+from datetime import datetime
+
+async def my_db_handler(topic: str, start_time: datetime, end_time: datetime):
+    # Only handle topics we own; return None to fall through to the next handler
+    if not topic.startswith("mydb|"):
+        return None
+
+    feed = topic.split("|")[1]  # e.g. "funding-rates?symbol=BTC"
+    # ... fetch from your database ...
+    return pl.DataFrame({"start_time": [...], "value": [...]})
+
+dataloader = DataLoader(
+    data_dir="data/raw",
+    credentials={"cybotrade_api_key": os.getenv("DATASOURCE_API_KEY")},
+    handlers=[my_db_handler],
+)
+
+df = await dataloader.load(
+    topic="mydb|funding-rates?symbol=BTC",
+    start_time=start_time,
+    end_time=end_time,
+)
+df.write_parquet("data/btc_funding.parquet")
+```
+
+---
+
+## Using Yahoo Finance data
+
+ADRS ships with a ready-made handler for [Yahoo Finance](https://finance.yahoo.com), which is useful for
+equities, ETFs, and macro indicators:
+
+```py
+from adrs.data.handler import yfinance_handler
+
+dataloader = DataLoader(
+    data_dir="data/raw",
+    credentials={"cybotrade_api_key": os.getenv("DATASOURCE_API_KEY")},
+    handlers=[yfinance_handler],
+)
+
+# Download daily S&P 500 ETF data
+df_spy = await dataloader.load(
+    topic="yfinance|candle?ticker=SPY&interval=1d",
+    start_time=datetime.fromisoformat("2020-01-01T00:00:00Z"),
+    end_time=datetime.fromisoformat("2025-01-01T00:00:00Z"),
+)
+df_spy.write_parquet("data/spy_1d.parquet")
+```
+
+---
+
+## Cache layout
+
+After running your downloads, the `data/raw` directory will contain cached files managed by ADRS:
+
+<Files>
+  <Folder name="data" defaultOpen>
+    <Folder name="raw" defaultOpen>
+      <File name="binance-spot_candle_BTCUSDT_1h_2023-01-01_2025-01-01.parquet" />
+      <File name="bybit-linear_candle_BTCUSDT_1m_2023-01-01_2025-01-01.parquet" />
+    </Folder>
+    <File name="btc_binance_1h.parquet" />
+    <File name="spy_1d.parquet" />
+  </Folder>
+</Files>
+
+<Callout title="Re-downloading">
+  Pass `override_existing=True` to `dataloader.load()` to force a fresh download even if a cached file already
+  exists for that topic and time range.
+</Callout>

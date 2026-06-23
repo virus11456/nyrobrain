@@ -1,0 +1,5 @@
+{
+    "title": "Data",
+    "pages": ["index", "datamap", "data-processor"],
+    "icon": "Database"
+}

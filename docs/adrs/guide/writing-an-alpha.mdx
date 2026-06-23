@@ -1,0 +1,354 @@
+---
+title: Writing an Alpha
+description: A complete end-to-end walkthrough — from raw idea to a backtested, reported alpha.
+---
+
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Accordions, Accordion } from 'fumadocs-ui/components/accordion';
+
+This guide takes a single alpha idea all the way from hypothesis to a full backtest report with sensitivity
+analysis. We will build a **Coinbase–Binance premium Z-score** alpha: when BTC on Coinbase trades at a
+significant premium over Binance spot, we expect prices to mean-revert upward.
+
+<Steps>
+<Step>
+
+## Define the hypothesis
+
+Before writing any code, state the hypothesis clearly:
+
+> *When BTC on Coinbase trades at an unusually large premium over Binance spot (measured as a z-score of the
+> price spread), the overall BTC price tends to continue rising in the short term.*
+
+This gives us:
+- **Model:** $y = \text{zscore}(P_{\text{coinbase}} - P_{\text{binance}})$
+- **Signal:** long when $y \geq +0.825$, flat when $y \leq -0.825$
+
+</Step>
+<Step>
+
+## Declare data sources
+
+Subclass `Alpha` and declare the data your alpha needs inside `__init__`. Each `DataInfo` maps a data topic
+to the column names you will use in `next()`.
+
+```py
+import polars as pl
+from typing import override
+from adrs import Alpha
+from adrs.data import DataInfo, DataColumn, DataProcessor
+
+class CoinbasePremiumAlpha(Alpha):
+    def __init__(self, window: int, entry: float, exit: float) -> None:
+        super().__init__(
+            id="coinbase_premium_zscore",
+            data_infos=[
+                DataInfo(
+                    topic="binance-spot|candle?symbol=BTCUSDT&interval=1h",
+                    columns=[DataColumn(src="close", dst="close_binance")],
+                    lookback_size=window + 100,  # extra bars needed to warm up the z-score
+                ),
+                DataInfo(
+                    topic="coinbase|candle?symbol=BTCUSD&interval=1h",
+                    columns=[DataColumn(src="close", dst="close_coinbase")],
+                    lookback_size=window + 100,
+                ),
+            ],
+            data_processor=DataProcessor(),
+        )
+        self.window = window
+        self.entry  = entry
+        self.exit   = exit
+```
+
+<Callout title="lookback_size">
+  Set `lookback_size` to at least the longest rolling window you use. ADRS automatically prepends this
+  many extra historical bars so your indicators are fully warmed up at `start_time`. It is recommended that you always 
+  use a bigger lookback size than you need as a safe buffer, in case more data is needed for the calculation window. 
+  For example, `window + 100`.
+</Callout>
+
+</Step>
+<Step>
+
+## Implement `next()`
+
+`next()` receives a fully-joined `pl.DataFrame` with one row per bar and returns a DataFrame that must
+include a `start_time` column and a `signal` column with values in $[-1, 1]$.
+
+```py
+    @override
+    def next(self, data_df: pl.DataFrame) -> pl.DataFrame:
+        # ── 1. Model ──────────────────────────────────────────────────────
+        spread = pl.col("close_coinbase") - pl.col("close_binance")
+        zscore = (
+            (spread - spread.rolling_mean(self.window))
+            / spread.rolling_std(self.window, ddof=1)
+        )
+
+        df = data_df.with_columns(zscore.alias("zscore")) \
+                    .filter(pl.col("zscore").is_finite())
+
+        # ── 2. Signal generation ──────────────────────────────────────────
+        df = df.with_columns(
+            pl.when(pl.col("zscore") >= self.entry)
+              .then(1)
+              .when(pl.col("zscore") <= self.exit)
+              .then(0)
+              .otherwise(None)
+              .forward_fill()
+              .fill_null(strategy="zero")
+              .alias("signal")
+        )
+        return df
+```
+
+The signal logic here implements a simple **threshold-based long-only rule**:
+- Enter long (`1`) when the z-score rises above `entry`.
+- Exit to flat (`0`) when the z-score drops below `exit`.
+- Hold the previous position (`forward_fill`) while between thresholds.
+
+</Step>
+<Step>
+
+## Load data and run the backtest
+
+```py
+import os, asyncio
+from datetime import datetime, timedelta
+from adrs import DataLoader
+from adrs.data import DataInfo, DataColumn, Datamap
+from adrs.performance import Evaluator
+
+async def main():
+    start_time = datetime.fromisoformat("2020-05-01T00:00:00Z")
+    end_time   = datetime.fromisoformat("2025-01-01T00:00:00Z")
+
+    dataloader = DataLoader(
+        data_dir="data/raw",
+        credentials={"cybotrade_api_key": os.getenv("DATASOURCE_API_KEY")},
+    )
+
+    # Price data for the evaluator (1-minute Bybit candles → fine-grained P&L)
+    evaluator = Evaluator(assets={
+        "BTC": DataInfo(
+            topic="bybit-linear|candle?symbol=BTCUSDT&interval=1m",
+            columns=[DataColumn(src="close", dst="price")],
+            lookback_size=0,
+        )
+    })
+
+    alpha = CoinbasePremiumAlpha(window=40, entry=0.825, exit=-0.825)
+
+    # Initialise the datamap with alpha data + evaluator price data
+    datamap = Datamap()
+    await datamap.init(dataloader=dataloader, infos=alpha.data_infos,
+                       start_time=start_time, end_time=end_time)
+    await datamap.init(dataloader=dataloader, infos=list(evaluator.assets.values()),
+                       start_time=start_time, end_time=end_time + timedelta(days=1))
+
+    # Pre-process once so we can reuse the DataFrame later
+    data_df = alpha.data_processor.process(datamap)
+
+    performance, df = alpha.backtest(
+        evaluator=evaluator,
+        base_asset="BTC",
+        datamap=datamap,
+        data_df=data_df,
+        start_time=start_time,
+        end_time=end_time,
+        fees=0.035,     # 3.5 bps per trade
+        price_shift=10, # assume 10 min execution delay
+    )
+
+    print(f"Sharpe:    {performance.sharpe_ratio:.2f}")
+    print(f"CAGR:      {performance.cagr:.1%}")
+    print(f"Max DD:    {performance.max_drawdown_percentage:.1%}")
+    print(f"Win rate:  {performance.win_rate:.1%}")
+    print(f"# Trades:  {performance.num_trades}")
+
+asyncio.run(main())
+```
+
+</Step>
+<Step>
+
+## Sensitivity test and generate a report
+
+A single backtest tells you how the alpha performs at one set of parameters. Before publishing research,
+validate that performance holds across nearby parameter values using `Sensitivity`:
+
+```py
+from adrs.utils import backforward_split
+from adrs.tests import Sensitivity, SensitivityParameter
+from adrs.report import AlphaReportV1
+
+# Split the full history into backtest (70 %) and forward-test (30 %)
+B_start, B_end, F_start, F_end = backforward_split(
+    start_time=start_time, end_time=end_time, size=(0.7, 0.3)
+)
+
+sensitivity = Sensitivity(
+    alpha=alpha,
+    parameters={
+        "window": SensitivityParameter(min_val=10, min_gap=5),
+        "entry":  SensitivityParameter(min_val=0.1),
+        "exit":   SensitivityParameter(min_val=None),  # no lower bound
+    },
+    gap_percent=0.15,  # vary each param ±15 % around its baseline
+    num_steps=3,       # 3 steps up + 3 steps down = up to 7 values per param
+)
+
+report = AlphaReportV1.compute(
+    alpha,
+    B_start, B_end,
+    F_start, F_end,
+    sensitivity,
+    evaluator=evaluator,
+    base_asset="BTC",
+    datamap=datamap,
+    data_df=data_df,
+    fees=0.035,
+    price_shift=10,
+)
+
+# ── Results ───────────────────────────────────────────────────────────────
+print("Backtest  Sharpe:", report.back.performance.sharpe_ratio)
+print("Forward   Sharpe:", report.forward.performance.sharpe_ratio)
+print("Robustness score:", report.back.sensitivity_sr_summary.score)
+
+# Save to disk
+report.write_parquet("reports/coinbase_premium.parquet")
+```
+
+The **robustness score** (`0`–`1`) rewards consistent performance across parameter variations.
+A score above `0.8` is generally considered strong.
+
+</Step>
+</Steps>
+
+---
+
+## Complete source
+
+<Accordions>
+  <Accordion id="full-source" title="Full script">
+    ```py
+    import os, asyncio
+    import polars as pl
+    from typing import override
+    from datetime import datetime, timedelta
+
+    from adrs import Alpha, DataLoader
+    from adrs.data import DataInfo, DataColumn, Datamap, DataProcessor
+    from adrs.performance import Evaluator
+    from adrs.utils import backforward_split
+    from adrs.tests import Sensitivity, SensitivityParameter
+    from adrs.report import AlphaReportV1
+
+
+    class CoinbasePremiumAlpha(Alpha):
+        def __init__(self, window: int, entry: float, exit: float) -> None:
+            super().__init__(
+                id="coinbase_premium_zscore",
+                data_infos=[
+                    DataInfo(
+                        topic="binance-spot|candle?symbol=BTCUSDT&interval=1h",
+                        columns=[DataColumn(src="close", dst="close_binance")],
+                        lookback_size=window + 100,
+                    ),
+                    DataInfo(
+                        topic="coinbase|candle?symbol=BTCUSD&interval=1h",
+                        columns=[DataColumn(src="close", dst="close_coinbase")],
+                        lookback_size=window + 100,
+                    ),
+                ],
+                data_processor=DataProcessor(),
+            )
+            self.window = window
+            self.entry  = entry
+            self.exit   = exit
+
+        @override
+        def next(self, data_df: pl.DataFrame) -> pl.DataFrame:
+            spread = pl.col("close_coinbase") - pl.col("close_binance")
+            zscore = (
+                (spread - spread.rolling_mean(self.window))
+                / spread.rolling_std(self.window, ddof=1)
+            )
+            df = data_df.with_columns(zscore.alias("zscore")) \
+                        .filter(pl.col("zscore").is_finite())
+            df = df.with_columns(
+                pl.when(pl.col("zscore") >= self.entry)
+                  .then(1)
+                  .when(pl.col("zscore") <= self.exit)
+                  .then(0)
+                  .otherwise(None)
+                  .forward_fill()
+                  .fill_null(strategy="zero")
+                  .alias("signal")
+            )
+            return df
+
+
+    async def main():
+        start_time = datetime.fromisoformat("2020-05-01T00:00:00Z")
+        end_time   = datetime.fromisoformat("2025-01-01T00:00:00Z")
+
+        dataloader = DataLoader(
+            data_dir="data/raw",
+            credentials={"cybotrade_api_key": os.getenv("DATASOURCE_API_KEY")},
+        )
+        evaluator = Evaluator(assets={
+            "BTC": DataInfo(
+                topic="bybit-linear|candle?symbol=BTCUSDT&interval=1m",
+                columns=[DataColumn(src="close", dst="price")],
+                lookback_size=0,
+            )
+        })
+        alpha = CoinbasePremiumAlpha(window=40, entry=0.825, exit=-0.825)
+
+        datamap = Datamap()
+        await datamap.init(dataloader=dataloader, infos=alpha.data_infos,
+                           start_time=start_time, end_time=end_time)
+        await datamap.init(dataloader=dataloader, infos=list(evaluator.assets.values()),
+                           start_time=start_time, end_time=end_time + timedelta(days=1))
+
+        data_df = alpha.data_processor.process(datamap)
+
+        B_start, B_end, F_start, F_end = backforward_split(
+            start_time=start_time, end_time=end_time, size=(0.7, 0.3)
+        )
+        sensitivity = Sensitivity(
+            alpha=alpha,
+            parameters={
+                "window": SensitivityParameter(min_val=10, min_gap=5),
+                "entry":  SensitivityParameter(min_val=0.1),
+            },
+            gap_percent=0.15,
+            num_steps=3,
+        )
+        report = AlphaReportV1.compute(
+            alpha, B_start, B_end, F_start, F_end, sensitivity,
+            evaluator=evaluator, base_asset="BTC", datamap=datamap,
+            data_df=data_df, fees=0.035, price_shift=10,
+        )
+        print("Back  Sharpe:", report.back.performance.sharpe_ratio)
+        print("Fwd   Sharpe:", report.forward.performance.sharpe_ratio)
+        print("Score:       ", report.back.sensitivity_sr_summary.score)
+        report.write_parquet("reports/coinbase_premium.parquet")
+
+
+    if __name__ == "__main__":
+        asyncio.run(main())
+    ```
+  </Accordion>
+</Accordions>
+
+---
+
+## What to do next
+
+- Explore the [Metrics](/docs/adrs/performance/metrics) reference to understand every field in `Performance`.
+- Dive into [Sensitivity](/docs/adrs/sensitivity) to learn how the robustness score is calculated.
+- Read [Building a Portfolio](/docs/adrs/guide/building-a-portfolio) to combine this alpha with others.

@@ -1,0 +1,182 @@
+---
+title: Report
+description: Generating, serialising, and comparing alpha and portfolio research reports.
+---
+
+## Overview
+
+The report layer formalises your research findings into a **standardised, serialisable format** stored as
+[Apache Parquet](https://parquet.apache.org). Reports capture both the backtest and forward-test periods so you can
+evaluate out-of-sample performance and compare alphas on equal footing.
+
+There are two report types:
+
+| Class | Use case |
+|---|---|
+| `AlphaReportV1` | Single alpha — includes sensitivity testing and both test periods |
+| `PortfolioReportV1` | Multi-asset portfolio — covers both test periods |
+
+---
+
+## backforward_split
+
+Before generating a report you need to split your time range into a **backtest** window (for fitting) and a
+**forward-test** window (for out-of-sample validation). Use the utility function:
+
+```py
+from adrs.utils import backforward_split
+
+B_start, B_end, F_start, F_end = backforward_split(
+    start_time=start_time,
+    end_time=end_time,
+    size=(0.7, 0.3),       # 70 % backtest, 30 % forward test
+)
+
+# alternatively, fix the forward window to the last N days:
+B_start, B_end, F_start, F_end = backforward_split(
+    start_time=start_time,
+    end_time=end_time,
+    forward_days=90,       # last 90 days are the forward test
+)
+```
+
+---
+
+## AlphaReportV1
+
+`AlphaReportV1` is the standard single-alpha report. It runs the backtest and forward test, performs sensitivity
+analysis, and packages everything into one model.
+
+### Generating a report
+
+```py
+from adrs.report import AlphaReportV1
+
+report = AlphaReportV1.compute(
+    alpha,
+    B_start, B_end,     # backtest period
+    F_start, F_end,     # forward-test period
+    sensitivity,        # Sensitivity instance
+    # --- same kwargs as alpha.backtest() ---
+    evaluator=evaluator,
+    base_asset="BTC",
+    datamap=datamap,
+    data_df=data_df,
+    fees=fees,
+    price_shift=10,
+)
+```
+
+### Fields
+
+| Field | Type | Description |
+|---|---|---|
+| `alpha_id` | `str` | Alpha identifier |
+| `params` | `dict` | Alpha baseline parameters |
+| `back` | `AlphaReportV1Performance` | Backtest results |
+| `forward` | `AlphaReportV1Performance` | Forward-test results |
+| `sensitivity_params` | `dict[str, SensitivityParameter]` | Constraints used during sensitivity testing |
+
+### AlphaReportV1Performance
+
+Each period (back / forward) exposes:
+
+| Field | Type | Description |
+|---|---|---|
+| `performance` | `Performance` | All metrics for this period |
+| `performance_df` | `pl.DataFrame` | Full per-bar backtest result |
+| `sensitivity` | `list[tuple[Params, Performance]]` | Per-permutation sensitivity results |
+| `sensitivity_sr_summary` | `SensitivitySharpeRatioSummary` | Robustness summary statistics |
+
+```py
+print(report.back.performance.sharpe_ratio)
+print(report.forward.performance.sharpe_ratio)
+print(report.back.sensitivity_sr_summary.score)
+```
+
+### Saving a report
+
+```py
+# Save to Parquet (recommended)
+report.write_parquet("btc_premium_report.parquet")
+
+# Or raw bytes for custom storage
+raw: bytes = report.serialize()
+
+# Load back
+restored = AlphaReportV1.deserialize(raw)
+```
+
+---
+
+## PortfolioReportV1
+
+`PortfolioReportV1` wraps a `Portfolio` and produces the same split-period report for a multi-asset strategy.
+
+### Generating a report
+
+```py
+from adrs.report.portfolio import PortfolioReportV1
+
+report = PortfolioReportV1.compute(
+    portfolio=portfolio,
+    B_start=B_start, B_end=B_end,
+    F_start=F_start, F_end=F_end,
+)
+```
+
+### Fields
+
+| Field | Type | Description |
+|---|---|---|
+| `portfolio_id` | `str` | Portfolio identifier |
+| `back` | `PortfolioReportV1Performance` | Backtest results |
+| `forward` | `PortfolioReportV1Performance` | Forward-test results |
+
+### PortfolioReportV1Performance
+
+| Field | Type | Description |
+|---|---|---|
+| `performance` | `PortfolioPerformance` | Aggregate + per-asset performance metrics |
+| `performance_df` | `DataFrame` | Full per-bar portfolio result |
+
+`PortfolioPerformance` extends `Performance` with a `trades` field containing per-asset breakdowns:
+
+```py
+print(report.back.performance.trades["BTC"].sharpe_ratio)
+print(report.back.performance.trades["ETH"].win_rate)
+```
+
+### Serialisation
+
+```py
+raw: bytes = report.serialize()
+restored  = PortfolioReportV1.deserialize(raw)
+```
+
+---
+
+## Comparing reports
+
+Because all reports are saved as Parquet, you can load and compare many of them with standard DataFrame tooling:
+
+```py
+import polars as pl
+
+# Load multiple reports and compare Sharpe ratios
+reports = {
+    "alpha_a": AlphaReportV1.deserialize(open("report_a.parquet", "rb").read()),
+    "alpha_b": AlphaReportV1.deserialize(open("report_b.parquet", "rb").read()),
+}
+
+comparison = pl.DataFrame([
+    {
+        "alpha": name,
+        "back_sharpe":    r.back.performance.sharpe_ratio,
+        "forward_sharpe": r.forward.performance.sharpe_ratio,
+        "robustness":     r.back.sensitivity_sr_summary.score,
+    }
+    for name, r in reports.items()
+])
+print(comparison)
+```

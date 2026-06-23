@@ -1,0 +1,86 @@
+---
+title: Quick Start
+description: Getting Started with ADRS
+icon: Album
+---
+
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
+import { ChartNoAxesCombined , Variable, Database, ScrollText } from 'lucide-react';
+
+## Introduction
+
+ADRS <span className='text-fd-muted-foreground text-sm'>(Alpha Development Research System)</span> is a **python framework**, 
+designed to be fast, flexible, and allow users to compose alpha ideas with ease.
+
+ADRS has different parts:
+
+<Cards>
+  <Card icon={<Database className="text-blue-300" />} title='Data'>
+  Ingests, normalizes, and aligns data from multiple sources for efficient large-scale research.
+  </Card>
+
+  <Card icon={<Variable className="text-red-300" />} title='Alpha & Portfolio'>
+  Compose alpha signals and portfolios with explicit, parameterized logic for rapid experimentation.
+  </Card>
+
+  <Card icon={<ChartNoAxesCombined className="text-green-300" />} title='Performance'>
+    Backtest and evaluate strategies efficiently across large datasets and parameter spaces.
+  </Card>
+
+  <Card icon={<ScrollText className="text-yellow-700" />} title='Report'>
+  Generate clear metrics, summaries, and visual outputs to communicate research results.
+  </Card>
+</Cards>
+
+<Callout title="Want to learn more?">
+  Read our in-depth [What is ADRS](/docs/adrs/what-is-adrs) introduction.
+</Callout>
+
+### Terminology
+
+**Alpha:** Refers to an insight or information edge that you know and others don't which is generally observed from 
+historical market data. Not to confuse with [alpha](https://en.wikipedia.org/wiki/Alpha_(finance)) in portfolio which 
+is used as a performance benchmark. 
+
+**[Datasource](https://docs.datasource.cybotrade.rs):** Market Data aggregator and provider.
+
+## Installation
+
+A minimum version of Python 3.12 required.
+
+```bash tab="pip"
+pip install adrs
+```
+
+```bash tab="uv"
+uv add adrs
+```
+
+## FAQ
+
+Some common questions you may encounter.
+
+<Accordions>
+  <Accordion id='missing-api-key' title="Getting error with missing API key?">
+    Make sure to provide your Datasource API Key when instantiating `DataLoader`.
+
+    ```py
+    DataLoader(data_dir="outdir", credentials={"cybotrade_api_key": "<your_api_key>"})
+    ```
+  </Accordion>
+
+  <Accordion id='failed-installation' title="Failed to install the library?">
+    The `adrs` library is only available for Python 3.12 and above, check your python version and upgrade if it is \<3.12.
+
+    ```bash
+    python -V
+    ```
+  </Accordion>
+</Accordions>
+
+## Learn More
+
+New here? Don't worry, we welcome your questions.
+
+If you find anything confusing, please give your feedback on [Github Discussion](https://github.com/balaenaquant/adrs/discussions)!

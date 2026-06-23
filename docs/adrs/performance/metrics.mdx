@@ -1,0 +1,142 @@
+---
+title: Metrics
+description: Reference for all performance metrics computed by ADRS after a backtest.
+---
+
+import { Accordions, Accordion } from 'fumadocs-ui/components/accordion';
+
+After a backtest completes, `alpha.backtest()` returns a `Performance` object that bundles every metric in one place.
+
+```py
+performance, df = alpha.backtest(...)
+
+print(performance.sharpe_ratio)
+print(performance.max_drawdown_percentage)
+print(performance.win_rate)
+```
+
+---
+
+## Performance model
+
+`Performance` is a [Pydantic](https://docs.pydantic.dev) model, meaning all fields are validated and type-safe.
+It is structured into three logical groups: **ratio metrics**, **drawdown metrics**, and **trade metrics**.
+
+### Ratio metrics
+
+These metrics measure risk-adjusted returns and general profitability.
+
+| Field | Type | Description |
+|---|---|---|
+| `sharpe_ratio` | `float` | Annualised Sharpe ratio: mean excess return divided by its standard deviation |
+| `sortino_ratio` | `float` | Like Sharpe but only penalises downside volatility |
+| `calmar_ratio` | `float` | CAGR divided by maximum drawdown |
+| `cagr` | `float` | Compound annual growth rate |
+| `annualized_return` | `float` | Annualised return as a decimal (e.g. `0.35` = 35 %) |
+| `total_return` | `float` | Cumulative return over the full period |
+| `min_cumu` | `float` | Minimum cumulative equity reached at any point |
+
+### Drawdown metrics
+
+Drawdown describes the peak-to-trough decline in equity. ADRS tracks the single largest drawdown episode in detail.
+
+| Field | Type | Description |
+|---|---|---|
+| `max_drawdown` | `float` | Largest absolute equity decline |
+| `max_drawdown_percentage` | `float` | Largest drawdown as a percentage of peak equity |
+| `max_drawdown_start_date` | `datetime` | When the drawdown episode began |
+| `max_drawdown_end_date` | `datetime` | When the equity reached its trough |
+| `max_drawdown_recover_date` | `datetime` | When equity recovered to the prior peak |
+| `max_drawdown_max_duration_in_days` | `float` | Total drawdown episode length in days |
+
+### Trade metrics
+
+Trade metrics characterise how the strategy actually trades over the evaluation period.
+
+| Field | Type | Description |
+|---|---|---|
+| `num_trades` | `int` | Total number of trades executed |
+| `long_trades` | `int` | Number of long trades |
+| `short_trades` | `int` | Number of short trades |
+| `win_trades` | `int` | Number of winning trades |
+| `lose_trades` | `int` | Number of losing trades |
+| `win_rate` | `float` | Win rate as a decimal (e.g. `0.6` = 60 %) |
+| `win_streak` | `int` | Longest consecutive winning streak |
+| `lose_streak` | `int` | Longest consecutive losing streak |
+| `avg_holding_time_in_seconds` | `float` | Average trade duration in seconds |
+| `num_datapoints` | `int` | Total number of bars in the evaluation window |
+
+### Period & metadata
+
+| Field | Type | Description |
+|---|---|---|
+| `start_time` | `datetime` | Evaluation period start |
+| `end_time` | `datetime` | Evaluation period end |
+| `metadata` | `dict[str, Any]` | Arbitrary key/value pairs for custom annotations |
+
+---
+
+## Computing Performance from a DataFrame
+
+If you have a backtest result DataFrame and want to (re-)compute metrics without running the full backtest again,
+use the class method:
+
+```py
+from adrs.types import Performance
+
+perf = Performance.from_df(
+    df=result_df,
+    start_time=start_time,
+    end_time=end_time,
+    metadata={"note": "manual recompute"},
+)
+```
+
+This is useful when loading a cached result DataFrame from disk and inspecting metrics.
+
+---
+
+## Metric classes (advanced)
+
+Internally, ADRS computes metrics through three composable `Metrics` subclasses. You can instantiate them directly
+if you want to compute individual metric groups on an arbitrary DataFrame.
+
+<Accordions>
+  <Accordion id="ratio-class" title="Ratio">
+    ```py
+    from adrs.performance.metric import Ratio
+    from datetime import timedelta
+
+    ratio = Ratio(num_periods=365, period=timedelta(days=1))
+    result = ratio.compute(df)
+    # result contains: sharpe_ratio, sortino_ratio, cagr, annualized_return, total_return, min_cumu
+    ```
+
+    | Parameter | Default | Description |
+    |---|---|---|
+    | `num_periods` | `365` | Trading periods per year (e.g. 252 for equities, 365 for crypto) |
+    | `period` | `timedelta(days=1)` | Duration of a single period |
+  </Accordion>
+  <Accordion id="drawdown-class" title="Drawdown">
+    ```py
+    from adrs.performance.metric import Drawdown
+    from datetime import timedelta
+
+    drawdown = Drawdown(num_periods=365, period=timedelta(days=1))
+    result = drawdown.compute(df)
+    # result contains: max_drawdown, max_drawdown_percentage, calmar_ratio, drawdown dates & duration
+    ```
+  </Accordion>
+  <Accordion id="trade-class" title="Trade">
+    ```py
+    from adrs.performance.metric import Trade
+
+    trade = Trade()
+    result = trade.compute(df)
+    # result contains: num_trades, win_rate, long/short counts, streaks, avg_holding_time
+    ```
+  </Accordion>
+</Accordions>
+
+The `df` passed to each `compute()` method must be the backtest result DataFrame (the second element of the
+`alpha.backtest()` return value) and must contain at minimum: `start_time`, `pnl`, `equity`, `signal`, `trade`.

@@ -9,7 +9,9 @@ dependencies = [
     "cybotrade-datasource>=0.1.9",
     "httpx>=0.28.1",
     "matplotlib>=3.10.8",
+    "plotly>=6.8.0",
     "polars>=1.39.3",
+    "streamlit>=1.58.0",
 ]
 
 [dependency-groups]

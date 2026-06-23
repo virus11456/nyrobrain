@@ -51,6 +51,8 @@ uv run python brain/source/dashboard/run.py
 
 ## 互動看板
 
+**Live Demo:** https://virus11456.github.io/nyrobrain/
+
 `streamlit run brain/source/dashboard/app.py`
 
 - 即時決策橫幅（BUY/WATCH/WAIT/CAUTION/SELL）
